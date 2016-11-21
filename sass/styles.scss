@@ -1,0 +1,15 @@
+$defaultcolor: #33B5E5;
+
+html, body{
+  height: 100%;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+toolbar {
+  background-color: $defaultcolor;
+  width: 100%;
+  height: 2em;
+}
