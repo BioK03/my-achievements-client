@@ -15,7 +15,7 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
-            template: "\n    <form>\n        <input type=\"text\"/>\n    </form>\n    "
+            template: "\n    <h2>Se connecter \u00E0 My Achievements</h2>\n    <form>\n        <label for=\"login\">E-mail</label><br/>\n        <input id=\"login\" type=\"text\" name=\"login\" placeholder=\"john.doe@email.com\"/><br/><br/>\n        <label for=\"password\">Mot de passe</label><br/>\n        <input id=\"password\" type=\"password\" name=\"password\" placeholder=\"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\"/><br/><br/>\n        <input type=\"submit\" value=\"Se connecter\"/>\n    </form><br/>\n    <h4>Se connecter avec votre r\u00E9seau social pr\u00E9f\u00E9r\u00E9 :</h4><br/>\n    <span>\n        <a id=\"linkedin\" href=\"#\">\n            <img src=\"dist/images/linkedin.png\"/>\n        </a>\n    </span>\n    <span>\n        <a id=\"facebook\" href=\"#\">\n            <img src=\"dist/images/facebook.png\"/>\n        </a>\n    </span>\n    <span>\n        <a id=\"google\" href=\"#\">\n            <img src=\"dist/images/google.png\"/>\n        </a>\n    </span>\n    <span>\n        <a id=\"twitter\" href=\"#\">\n            <img src=\"dist/images/twitter.png\"/>\n        </a>\n    </span>\n\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], LoginComponent);

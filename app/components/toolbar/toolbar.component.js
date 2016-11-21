@@ -15,7 +15,7 @@ var ToolbarComponent = (function () {
     ToolbarComponent = __decorate([
         core_1.Component({
             selector: 'toolbar',
-            template: "\n   \n    "
+            template: "\n   <span id=\"logo\">\n    <span class=\"fa fa-graduation-cap\"></span>\n  </span>\n  <span id=\"logoName\">My Achievements</span>\n\n  <searchbar></searchbar>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], ToolbarComponent);

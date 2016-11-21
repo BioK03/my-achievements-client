@@ -15,7 +15,7 @@ var SearchbarComponent = (function () {
     SearchbarComponent = __decorate([
         core_1.Component({
             selector: 'searchbar',
-            template: "\n   \n    "
+            template: "\n   <form>\n    <input type=\"text\" name=\"search\" placeholder=\"Recherche...\"/><!--\n    --><button type=\"submit\"><i class=\"fa fa-search\"></i></button>\n   </form>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], SearchbarComponent);

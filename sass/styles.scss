@@ -1,15 +1,176 @@
 $defaultcolor: #33B5E5;
+$borderLogo: 4px;
 
-html, body{
+html, body {
   height: 100%;
   width: 100%;
   display: block;
   margin: 0 auto;
   padding: 0;
+  font-family: sans-serif;
 }
+
+form {
+  input {
+    font-size: 1.5em;
+    background-color: #F8F8F8;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #DDDDDD;
+    color: #000000;
+  }
+
+  input[type="submit"] {
+    padding: 0.25em;
+    font-size: 1.75rem;
+    background-color: $defaultcolor;
+    color: #FFFFFF;
+    border-bottom: 6px solid darken($defaultcolor, 25%);
+  }
+
+  input[type="submit"]:focus {
+    background-color: lighten($defaultcolor, 10%);
+    border-bottom: 1px solid darken($defaultcolor, 15%);
+    border-top: 6px solid transparent;
+  }
+}
+
 
 toolbar {
   background-color: $defaultcolor;
   width: 100%;
-  height: 2em;
+  height: 3em;
+  display: block;
+
+  #logo {
+    margin-left: 1em;
+    height: 3.5em;
+    width: 4em;
+    padding-top: 0.5em;
+    background-color: $defaultcolor;
+    border-radius: 2em;
+    display: inline-block;
+    color: #FFFFFF;
+    text-align: center;
+
+    .fa {
+      margin-left: calc(0.5em - #{$borderLogo/2});
+      height: calc(2em - #{$borderLogo});
+      width: calc(3em - #{$borderLogo});
+      display: block;
+      padding-top: 1em;
+      text-align: center;
+      border-radius: 1.5em;
+      border: #{$borderLogo} solid #FFFFFF;
+    }
+  }
+
+  #logoName {
+    display: inline-block;
+    color: #FFFFFF;
+    font-size: 1.5em;
+  }
+}
+
+login {
+  margin: 0 auto;
+  display: block;
+  margin-left: 20%;
+  font-size: 1.5em;
+
+  span:not(:first-child){
+    margin-left: 2em;
+  }
+
+  span {
+    display: inline-block;
+    a {
+      display: inline-block;
+      height: 3em;
+
+      img {
+        max-height: 3em;
+        width: 3em;
+        display: block;
+      }
+    }
+
+    
+
+    #linkedin {
+      background-color: #0177B5;
+      border-bottom: 6px solid darken(#0177B5, 25%);
+    }
+
+    #linkedin:focus {
+      border-top: 5px solid transparent;
+      border-bottom: 1px solid darken(#0177B5, 15%);
+    }
+
+    #facebook {
+      background-color: #3B5998;
+      border-bottom: 6px solid darken(#3B5998, 25%);
+    }
+
+    #facebook:focus {
+      border-top: 5px solid transparent;
+      border-bottom: 1px solid darken(#3B5998, 15%);
+    }
+
+    #google {
+      background-color: #EEEEEE;
+      border-bottom: 6px solid darken(#EEEEEE, 25%);
+    }
+
+    #google:focus {
+      border-top: 5px solid transparent;
+      border-bottom: 1px solid darken(#EEEEEE, 15%);
+    }
+
+    #twitter {
+      background-color: #55ACEE;
+      border-bottom: 6px solid darken(#55ACEE, 25%);
+
+      img {
+        width: 2em;
+        padding: 0.5em;
+      }
+    }
+
+    #twitter:focus {
+      border-top: 5px solid transparent;
+      border-bottom: 1px solid darken(#55ACEE, 15%);
+    }
+  }
+
+  
+}
+
+searchbar {
+  position: relative;
+  top: -0.9em;
+  display: inline-block;
+  margin: 0 auto;
+
+  form {
+    input, input[type="submit"], button {
+      display: inline-block;
+      height: 1.5rem !important;
+      border: 0;
+      background-color: #FFFFFF;
+    }
+
+    input {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    button {
+      position: relative;
+      top: -0.3em;
+      border-left: 1px solid #DDDDDD;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
 }

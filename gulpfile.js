@@ -34,4 +34,5 @@ gulp.task('compress', function() {
 gulp.task('default', function () {
   gulp.watch('./sass/**/*.scss', ['compress']);
   gulp.watch('./scripts/**/*.js', ['jscs', 'compress']);
+  
 });
