@@ -2,12 +2,21 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'toolbar',
   template: `
-   <span id="logo">
-    <span class="fa fa-graduation-cap"></span>
-  </span>
-  <span id="logoName">My Achievements</span>
+   <div>
+     <span id="logo">
+      <span class="fa fa-graduation-cap"></span>
+    </span>
+    <span id="logoName">MY<span>ACHIEVEMENTS</span></span>
+   </div>
+   <div>
+    <searchbar></searchbar>
+   </div>
+   <div>
 
-  <searchbar></searchbar>
+   </div>
+  
+
+  
     `
 })
 export class ToolbarComponent { }

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'login',
   template: `
-    <h2>Se connecter à My Achievements</h2>
+    <h2>Se connecter à <span id="logoName">MY<span>ACHIEVEMENTS</span></span></h2>
     <form>
         <label for="login">E-mail</label><br/>
-        <input id="login" type="text" name="login" placeholder="john.doe@email.com"/><br/><br/>
+        <input id="login" type="email" name="login" placeholder="john.doe@email.com" required/><br/><br/>
         <label for="password">Mot de passe</label><br/>
-        <input id="password" type="password" name="password" placeholder="••••••••••••"/><br/><br/>
+        <input id="password" type="password" name="password" placeholder="••••••••••••" required/><br/><br/>
         <input type="submit" value="Se connecter"/>
     </form><br/>
     <h4>Se connecter avec votre réseau social préféré :</h4><br/>

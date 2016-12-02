@@ -1,6 +1,8 @@
 $defaultcolor: #33B5E5;
 $borderLogo: 4px;
 
+
+
 html, body {
   height: 100%;
   width: 100%;
@@ -21,6 +23,7 @@ form {
   }
 
   input[type="submit"] {
+    margin-left: 2em;
     padding: 0.25em;
     font-size: 1.75rem;
     background-color: $defaultcolor;
@@ -41,6 +44,17 @@ toolbar {
   width: 100%;
   height: 3em;
   display: block;
+
+  #logoName {
+    color: #FFFFFF;
+    font-size: 1.5em;
+  }
+
+  div {
+    display: inline-block;
+    width: 33.33%;
+  }
+
 
   #logo {
     margin-left: 1em;
@@ -65,11 +79,7 @@ toolbar {
     }
   }
 
-  #logoName {
-    display: inline-block;
-    color: #FFFFFF;
-    font-size: 1.5em;
-  }
+  
 }
 
 login {
@@ -148,11 +158,16 @@ login {
 
 searchbar {
   position: relative;
-  top: -0.9em;
-  display: inline-block;
+  top: -0.4em;
+  display: block;
   margin: 0 auto;
+  width: 75%;
 
   form {
+    display: block;
+    width: 100%;
+    
+
     input, input[type="submit"], button {
       display: inline-block;
       height: 1.5rem !important;
@@ -161,11 +176,13 @@ searchbar {
     }
 
     input {
+      width: calc(100% - 1.5em);
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
     }
 
     button {
+      width: 2em;
       position: relative;
       top: -0.3em;
       border-left: 1px solid #DDDDDD;
@@ -174,3 +191,13 @@ searchbar {
     }
   }
 }
+
+#logoName {
+  display: inline-block;
+  font-weight: 100 !important;
+
+  span {
+    font-weight: 600 !important;
+  }
+}
+
