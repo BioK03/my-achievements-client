@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 @Component({
   selector: 'searchbar',
   template: `
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
    </form>
     `
 })
+
 export class SearchbarComponent { }

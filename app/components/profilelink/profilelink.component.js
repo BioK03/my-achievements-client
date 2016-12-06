@@ -9,15 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var profile_service_1 = require('../../services/profile/profile-service');
 var ProfilelinkComponent = (function () {
-    function ProfilelinkComponent() {
+    function ProfilelinkComponent(profileService) {
+        var _this = this;
+        this.profileService = profileService;
+        profileService.getProfile()
+            .subscribe(function (value) {
+            _this.profile = value.json();
+        });
     }
     ProfilelinkComponent = __decorate([
         core_1.Component({
             selector: 'profilelink',
-            template: "\n   \n    "
+            template: "\n    <div *ngIf=\"profile\">\n      Bonjour {{ profile.firstname }} !\n      <span>\n        <img src=\"{{profile.picture}}\"/>\n      </span>\n    </div>\n    <div *ngIf=\"!profile\">\n      <a href=\"\">Se connecter</a>\n    </div>\n    "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [profile_service_1.ProfileService])
     ], ProfilelinkComponent);
     return ProfilelinkComponent;
 }());

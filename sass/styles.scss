@@ -201,3 +201,36 @@ searchbar {
   }
 }
 
+profilelink {
+  width: 100%;
+  display: block;
+
+  div {
+    position: relative;
+    right: 6em;
+    height: 100%;
+    width: 100%;
+    display: block;
+    text-align: right;
+    color: #FFFFFF;
+
+    span {
+      position: absolute;
+      top: -1.5em;
+      right: -5em;
+      height: 4em;
+      width: 4em;
+      display: block;
+      border-radius: 2em;
+      background-color: $defaultcolor;
+      
+      img {
+        
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+    
+      }
+    }    
+  }
+}

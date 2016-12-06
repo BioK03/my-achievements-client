@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 @Component({
   selector: 'login',
   template: `
@@ -34,4 +35,5 @@ import { Component } from '@angular/core';
 
     `
 })
+
 export class LoginComponent { }

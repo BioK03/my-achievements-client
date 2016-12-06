@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./components/app.component');
 var login_component_1 = require('./components/login/login.component');
 var toolbar_component_1 = require('./components/toolbar/toolbar.component');
@@ -20,17 +21,20 @@ var profiledetails_component_1 = require('./components/profiledetails/profiledet
 var profiletabs_component_1 = require('./components/profiletabs/profiletabs.component');
 var tabdetails_component_1 = require('./components/tabdetails/tabdetails.component');
 var achievementpreview_component_1 = require('./components/achievementpreview/achievementpreview.component');
+var profile_service_1 = require('./services/profile/profile-service');
+var profiledetails_service_1 = require('./services/profiledetails/profiledetails-service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, http_1.JsonpModule],
             declarations: [
                 app_component_1.AppComponent, login_component_1.LoginComponent, toolbar_component_1.ToolbarComponent, searchbar_component_1.SearchbarComponent, loginbar_component_1.LoginbarComponent, profilelink_component_1.ProfilelinkComponent, profiledetails_component_1.ProfiledetailsComponent,
                 profiletabs_component_1.ProfiletabsComponent, tabdetails_component_1.TabdetailsComponent, achievementpreview_component_1.AchievementpreviewComponent, achievementpreview_component_1.AchievementpreviewComponent
             ],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            providers: [profile_service_1.ProfileService, profiledetails_service_1.ProfileDetailsService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

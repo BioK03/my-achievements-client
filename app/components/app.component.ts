@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+
 @Component({
-  selector: 'my-app',
+  selector: 'app',
   template: `
 	<toolbar>
   </toolbar>
   <login></login>
+  <profiledetails></profiledetails>
     `
 })
+
 export class AppComponent { }
