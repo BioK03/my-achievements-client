@@ -15,7 +15,6 @@ var app_component_1 = require('./components/app.component');
 var login_component_1 = require('./components/login/login.component');
 var toolbar_component_1 = require('./components/toolbar/toolbar.component');
 var searchbar_component_1 = require('./components/searchbar/searchbar.component');
-var loginbar_component_1 = require('./components/loginbar/loginbar.component');
 var profilelink_component_1 = require('./components/profilelink/profilelink.component');
 var profiledetails_component_1 = require('./components/profiledetails/profiledetails.component');
 var profiletabs_component_1 = require('./components/profiletabs/profiletabs.component');
@@ -30,7 +29,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule, http_1.JsonpModule],
             declarations: [
-                app_component_1.AppComponent, login_component_1.LoginComponent, toolbar_component_1.ToolbarComponent, searchbar_component_1.SearchbarComponent, loginbar_component_1.LoginbarComponent, profilelink_component_1.ProfilelinkComponent, profiledetails_component_1.ProfiledetailsComponent,
+                app_component_1.AppComponent, login_component_1.LoginComponent, toolbar_component_1.ToolbarComponent, searchbar_component_1.SearchbarComponent, profilelink_component_1.ProfilelinkComponent, profiledetails_component_1.ProfiledetailsComponent,
                 profiletabs_component_1.ProfiletabsComponent, tabdetails_component_1.TabdetailsComponent, achievementpreview_component_1.AchievementpreviewComponent, achievementpreview_component_1.AchievementpreviewComponent
             ],
             bootstrap: [app_component_1.AppComponent],

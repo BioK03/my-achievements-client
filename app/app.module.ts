@@ -6,7 +6,6 @@ import { AppComponent }   from './components/app.component';
 import { LoginComponent }   from './components/login/login.component';
 import { ToolbarComponent }   from './components/toolbar/toolbar.component';
 import { SearchbarComponent }   from './components/searchbar/searchbar.component';
-import { LoginbarComponent }   from './components/loginbar/loginbar.component';
 import { ProfilelinkComponent }   from './components/profilelink/profilelink.component';
 import { ProfiledetailsComponent }   from './components/profiledetails/profiledetails.component';
 import { ProfiletabsComponent }   from './components/profiletabs/profiletabs.component';
@@ -21,7 +20,7 @@ import { ProfileDetailsService } from './services/profiledetails/profiledetails-
 @NgModule({
   imports:      [ BrowserModule, HttpModule, JsonpModule ],
   declarations: [ 
-      AppComponent, LoginComponent, ToolbarComponent, SearchbarComponent, LoginbarComponent, ProfilelinkComponent, ProfiledetailsComponent, 
+      AppComponent, LoginComponent, ToolbarComponent, SearchbarComponent, ProfilelinkComponent, ProfiledetailsComponent, 
       ProfiletabsComponent, TabdetailsComponent, AchievementpreviewComponent, AchievementpreviewComponent
       
   ],
