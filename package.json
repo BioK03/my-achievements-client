@@ -34,6 +34,7 @@
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",
+    "forever": "^0.15.3",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.13",
     "gulp-concat": "^2.6.1",
