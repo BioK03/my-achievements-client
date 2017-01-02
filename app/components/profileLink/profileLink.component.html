@@ -1,0 +1,9 @@
+<div *ngIf="profile">
+    Bonjour {{ profile.firstname }} !
+    <span>
+    <img src="{{profile.picture}}"/>
+    </span>
+</div>
+<div *ngIf="!profile">
+    <a href="">Se connecter</a>
+</div>

@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AchievementpreviewComponent = (function () {
-    function AchievementpreviewComponent() {
+var AchievementPreviewComponent = (function () {
+    function AchievementPreviewComponent() {
     }
-    AchievementpreviewComponent = __decorate([
+    AchievementPreviewComponent = __decorate([
         core_1.Component({
-            selector: 'achievementpreview',
-            template: "\n   \n    "
+            moduleId: module.id,
+            selector: 'achievementPreview',
+            templateUrl: "achivementPreview.component.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], AchievementpreviewComponent);
-    return AchievementpreviewComponent;
+    ], AchievementPreviewComponent);
+    return AchievementPreviewComponent;
 }());
-exports.AchievementpreviewComponent = AchievementpreviewComponent;
-//# sourceMappingURL=achievementpreview.component.js.map
+exports.AchievementPreviewComponent = AchievementPreviewComponent;
+//# sourceMappingURL=achievementPreview.component.js.map

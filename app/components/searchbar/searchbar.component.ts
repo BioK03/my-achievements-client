@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'searchbar',
-  template: `
-   <form>
-    <input type="text" name="search" placeholder="Recherche..."/><!--
-    --><button type="submit"><i class="fa fa-search"></i></button>
-   </form>
-    `
+  templateUrl: "searchBar.component.html"
 })
 
 export class SearchbarComponent { }

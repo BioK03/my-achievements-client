@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ProfiletabsComponent = (function () {
-    function ProfiletabsComponent() {
+var ProfileTabsComponent = (function () {
+    function ProfileTabsComponent() {
     }
-    ProfiletabsComponent = __decorate([
+    ProfileTabsComponent = __decorate([
         core_1.Component({
-            selector: 'profiletabs',
-            template: "\n   \n    "
+            moduleId: module.id,
+            selector: 'profileTabs',
+            templateUrl: "profileTabs.component.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], ProfiletabsComponent);
-    return ProfiletabsComponent;
+    ], ProfileTabsComponent);
+    return ProfileTabsComponent;
 }());
-exports.ProfiletabsComponent = ProfiletabsComponent;
-//# sourceMappingURL=profiletabs.component.js.map
+exports.ProfileTabsComponent = ProfileTabsComponent;
+//# sourceMappingURL=profileTabs.component.js.map

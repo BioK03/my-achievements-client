@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var TabdetailsComponent = (function () {
-    function TabdetailsComponent() {
+var TabDetailsComponent = (function () {
+    function TabDetailsComponent() {
     }
-    TabdetailsComponent = __decorate([
+    TabDetailsComponent = __decorate([
         core_1.Component({
-            selector: 'tabdetails',
-            template: "\n   \n    "
+            moduleId: module.id,
+            selector: 'tabDetails',
+            templateUrl: "tabDetails.component.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], TabdetailsComponent);
-    return TabdetailsComponent;
+    ], TabDetailsComponent);
+    return TabDetailsComponent;
 }());
-exports.TabdetailsComponent = TabdetailsComponent;
-//# sourceMappingURL=tabdetails.component.js.map
+exports.TabDetailsComponent = TabDetailsComponent;
+//# sourceMappingURL=tabDetails.component.js.map

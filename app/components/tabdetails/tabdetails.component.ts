@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'tabdetails',
-  template: `
-   
-    `
+  moduleId: module.id,
+  selector: 'tabDetails',
+  templateUrl: "tabDetails.component.html"
 })
 
-export class TabdetailsComponent { }
+export class TabDetailsComponent { }
