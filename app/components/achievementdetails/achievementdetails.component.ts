@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'achievementdetails',
-  template: `
-   
-    `
+  moduleId: module.id,
+  selector: 'achievementDetails',
+  templateUrl: "achievementDetails.component.html"
 })
 
-export class AchievementdetailsComponent { }
+export class AchievementDetailsComponent { }

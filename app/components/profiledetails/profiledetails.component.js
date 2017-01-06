@@ -9,25 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var profiledetails_service_1 = require('../../services/profiledetails/profiledetails-service');
-var ProfiledetailsComponent = (function () {
-    function ProfiledetailsComponent(profileService) {
-        var _this = this;
+var platform_browser_1 = require('@angular/platform-browser');
+var router_1 = require('@angular/router');
+var profileDetailsService_1 = require('../../services/profileDetailsService');
+var ProfileDetailsComponent = (function () {
+    function ProfileDetailsComponent(profileService, sanitizer, route) {
         this.profileService = profileService;
-        profileService.getProfile()
-            .subscribe(function (value) {
-            _this.profiledetails = value.json();
-            console.log(_this.profiledetails);
-        });
+        this.sanitizer = sanitizer;
+        this.route = route;
     }
-    ProfiledetailsComponent = __decorate([
+    ProfileDetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .map(function (params) { return params['userId']; })
+            .subscribe(function (id) {
+            console.log(id);
+            _this.profileService.getProfile()
+                .subscribe(function (profileDetails) {
+                _this.profileDetails = profileDetails;
+                console.log(profileDetails);
+            });
+        });
+    };
+    ProfileDetailsComponent = __decorate([
         core_1.Component({
-            selector: 'profiledetails',
-            template: "\n    <div *ngIf=\"profiledetails\">\n      <div *ngFor=\"let profiledetailsitem of profiledetails.list\">\n        <span>{{profiledetailsitem.name}}</span>\n      </div>\n    </div>\n    "
+            moduleId: module.id,
+            selector: 'profileDetails',
+            templateUrl: "profileDetails.component.html",
         }), 
-        __metadata('design:paramtypes', [profiledetails_service_1.ProfileDetailsService])
-    ], ProfiledetailsComponent);
-    return ProfiledetailsComponent;
+        __metadata('design:paramtypes', [profileDetailsService_1.ProfileDetailsService, platform_browser_1.DomSanitizer, router_1.ActivatedRoute])
+    ], ProfileDetailsComponent);
+    return ProfileDetailsComponent;
 }());
-exports.ProfiledetailsComponent = ProfiledetailsComponent;
-//# sourceMappingURL=profiledetails.component.js.map
+exports.ProfileDetailsComponent = ProfileDetailsComponent;
+//# sourceMappingURL=profileDetails.component.js.map

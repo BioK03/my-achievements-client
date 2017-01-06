@@ -9,24 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var profile_service_1 = require('../../services/profile/profile-service');
-var ProfilelinkComponent = (function () {
-    function ProfilelinkComponent(profileService) {
+var ProfileService_1 = require('../../services/ProfileService');
+var ProfileLinkComponent = (function () {
+    function ProfileLinkComponent(profileService) {
         var _this = this;
         this.profileService = profileService;
         profileService.getProfile()
-            .subscribe(function (value) {
-            _this.profile = value.json();
+            .subscribe(function (profile) {
+            _this.profile = profile;
         });
     }
-    ProfilelinkComponent = __decorate([
+    ProfileLinkComponent = __decorate([
         core_1.Component({
-            selector: 'profilelink',
-            template: "\n    <div *ngIf=\"profile\">\n      Bonjour {{ profile.firstname }} !\n      <span>\n        <img src=\"{{profile.picture}}\"/>\n      </span>\n    </div>\n    <div *ngIf=\"!profile\">\n      <a href=\"\">Se connecter</a>\n    </div>\n    "
+            moduleId: module.id,
+            selector: 'profileLink',
+            templateUrl: "profileLink.component.html",
+            providers: [ProfileService_1.ProfileService]
         }), 
-        __metadata('design:paramtypes', [profile_service_1.ProfileService])
-    ], ProfilelinkComponent);
-    return ProfilelinkComponent;
+        __metadata('design:paramtypes', [ProfileService_1.ProfileService])
+    ], ProfileLinkComponent);
+    return ProfileLinkComponent;
 }());
-exports.ProfilelinkComponent = ProfilelinkComponent;
-//# sourceMappingURL=profilelink.component.js.map
+exports.ProfileLinkComponent = ProfileLinkComponent;
+//# sourceMappingURL=profileLink.component.js.map

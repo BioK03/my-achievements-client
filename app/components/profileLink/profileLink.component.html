@@ -1,0 +1,9 @@
+<a routerLink="/profile/42" *ngIf="profile">
+    Hi, {{ profile.firstname }} !
+    <span>
+        <img src="{{profile.picture}}"/>
+    </span>
+</a>
+<a routerLink="/login" *ngIf="!profile">
+    <a href="">Log in</a>
+</a>
