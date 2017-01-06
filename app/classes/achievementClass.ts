@@ -1,6 +1,6 @@
 
 
-export class ProfileDetailsListItem {
+export class Achievement {
   constructor(
       public name: string,
       public icon: string,
@@ -8,6 +8,4 @@ export class ProfileDetailsListItem {
       public longdesc: string,
       public pictures: string[]
     ){}
-
-  
 }

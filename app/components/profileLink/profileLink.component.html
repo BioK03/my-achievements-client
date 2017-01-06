@@ -1,9 +1,9 @@
-<div *ngIf="profile">
-    Bonjour {{ profile.firstname }} !
+<a routerLink="/profile/42" *ngIf="profile">
+    Hi, {{ profile.firstname }} !
     <span>
-    <img src="{{profile.picture}}"/>
+        <img src="{{profile.picture}}"/>
     </span>
-</div>
-<div *ngIf="!profile">
-    <a href="">Se connecter</a>
-</div>
+</a>
+<a routerLink="/login" *ngIf="!profile">
+    <a href="">Log in</a>
+</a>

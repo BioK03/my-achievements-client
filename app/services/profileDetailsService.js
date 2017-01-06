@@ -20,7 +20,7 @@ var ProfileDetailsService = (function () {
     }
     ProfileDetailsService.prototype.getProfile = function () {
         return this.http.get("http://localhost/json/profiledetails.php")
-            .map(function (res) { return res; })
+            .map(function (res) { return res.json(); })
             .catch(function (error) { return Observable_1.Observable.throw(error || 'Server error'); });
     };
     ProfileDetailsService = __decorate([

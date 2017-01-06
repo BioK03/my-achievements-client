@@ -1,6 +1,6 @@
 "use strict";
 var ProfileDetails = (function () {
-    function ProfileDetails(id, firstname, lastname, nbAchievements, list) {
+    function ProfileDetails(id, firstname, lastname, picture, nbAchievements, list) {
     }
     return ProfileDetails;
 }());

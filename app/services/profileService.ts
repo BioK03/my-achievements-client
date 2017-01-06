@@ -1,7 +1,7 @@
 import { Injectable }     from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -13,7 +13,7 @@ export class ProfileService {
 
   getProfile() {
       return this.http.get("http://localhost/json/profile.php")
-                      .map((res:Response) => res)
+                      .map(res => res.json())
                       .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 

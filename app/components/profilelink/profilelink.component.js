@@ -15,8 +15,8 @@ var ProfileLinkComponent = (function () {
         var _this = this;
         this.profileService = profileService;
         profileService.getProfile()
-            .subscribe(function (value) {
-            _this.profile = value.json();
+            .subscribe(function (profile) {
+            _this.profile = profile;
         });
     }
     ProfileLinkComponent = __decorate([

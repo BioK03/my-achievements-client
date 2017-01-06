@@ -6,6 +6,4 @@ export class Profile {
     public email: string,
     public picture: string
     ){}
-
-  
 }

@@ -1,5 +1,20 @@
-<div *ngIf="profiledetails">
-    <div *ngFor="let profiledetailsitem of profiledetails.list">
-        <span>{{profiledetailsitem.name}}</span>
+<div *ngIf="profileDetails">
+    <div class="profileName">
+        <img src="{{profileDetails.picture}}"/>
+        <span>{{profileDetails.firstname}} {{profileDetails.lastname}} ( {{profileDetails.nbAchievements}} <i class="fa fa-trophy"></i> )</span>
+        <div>
+            <span>Résumé</span>
+            <span  *ngFor="let achievementList of profileDetails.tabs" [style.background]="achievementList.color">
+                {{achievementList.name}}
+            </span>
+        </div>
+    </div>
+    <div class="achievementList" *ngFor="let achievementList of profileDetails.tabs" [style.background]="achievementList.color">
+        <span>
+            <i class="{{achievementList.icon}}"></i>{{achievementList.name}}
+        </span>
+        <span *ngFor="let achievement of achievementList.achievements">
+            <i class="{{achievement.icon}}"></i> {{achievement.name}}
+        </span>
     </div>
 </div>

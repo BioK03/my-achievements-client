@@ -9,6 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var profileDetailsService_1 = require('../services/profileDetailsService');
+var profileService_1 = require('../services/profileService');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -16,7 +18,8 @@ var AppComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app',
-            templateUrl: "app.component.html"
+            templateUrl: "app.component.html",
+            providers: [profileDetailsService_1.ProfileDetailsService, profileService_1.ProfileService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

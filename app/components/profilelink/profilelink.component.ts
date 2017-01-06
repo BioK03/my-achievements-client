@@ -17,8 +17,8 @@ export class ProfileLinkComponent {
   constructor (private profileService: ProfileService){
     profileService.getProfile()
       .subscribe(
-        (value: Response) => {
-          this.profile = <Profile>value.json();
+        profile => {
+          this.profile = profile;
         }
       );
   }

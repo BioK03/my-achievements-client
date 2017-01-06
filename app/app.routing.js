@@ -13,7 +13,7 @@ var appRoutes = [
         component: login_component_1.LoginComponent
     },
     {
-        path: 'profile',
+        path: 'profile/:userId',
         component: profileDetails_component_1.ProfileDetailsComponent
     }
 ];

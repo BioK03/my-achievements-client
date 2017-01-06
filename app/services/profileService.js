@@ -20,7 +20,7 @@ var ProfileService = (function () {
     }
     ProfileService.prototype.getProfile = function () {
         return this.http.get("http://localhost/json/profile.php")
-            .map(function (res) { return res; })
+            .map(function (res) { return res.json(); })
             .catch(function (error) { return Observable_1.Observable.throw(error || 'Server error'); });
     };
     ProfileService = __decorate([
@@ -30,4 +30,4 @@ var ProfileService = (function () {
     return ProfileService;
 }());
 exports.ProfileService = ProfileService;
-//# sourceMappingURL=ProfileService.js.map
+//# sourceMappingURL=profileService.js.map

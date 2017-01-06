@@ -11,11 +11,11 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'login',
+        path: 'login/:userId',
         component: LoginComponent
     },
     {
-        path: 'profile',
+        path: 'profile/:userId',
         component: ProfileDetailsComponent
     }
 ];
