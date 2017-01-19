@@ -17,6 +17,7 @@ import { AchievementDetailsComponent }   from './components/achievementDetails/a
 
 import { Routing } from './app.routing';
 
+import { LoginService } from './services/loginService';
 import { ProfileService } from './services/profileService';
 import { ProfileDetailsService } from './services/profileDetailsService';
 
@@ -39,7 +40,8 @@ import { ProfileDetailsService } from './services/profileDetailsService';
                   AchievementPreviewComponent ],
   bootstrap: [ AppComponent ],
   providers: [ ProfileService,
-               ProfileDetailsService ]
+               ProfileDetailsService,
+               LoginService ]
 })
 
 export class AppModule { }

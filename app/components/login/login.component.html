@@ -4,7 +4,7 @@
     <input id="login" type="email" name="login" placeholder="john.doe@email.com" required/><br/><br/>
     <label for="password">Mot de passe</label><br/>
     <input id="password" type="password" name="password" placeholder="••••••••••••" required/><br/><br/>
-    <input type="submit" value="Se connecter"/>
+    <input (click)="loginAttempt('a', 'b')" type="button" value="Se connecter"/>
 </form><br/>
 <h4>Se connecter avec votre réseau social préféré :</h4><br/>
 <span>

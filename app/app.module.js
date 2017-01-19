@@ -22,6 +22,7 @@ var profileTabs_component_1 = require('./components/profileTabs/profileTabs.comp
 var tabDetails_component_1 = require('./components/tabDetails/tabDetails.component');
 var achievementPreview_component_1 = require('./components/achievementPreview/achievementPreview.component');
 var app_routing_1 = require('./app.routing');
+var loginService_1 = require('./services/loginService');
 var profileService_1 = require('./services/profileService');
 var profileDetailsService_1 = require('./services/profileDetailsService');
 var AppModule = (function () {
@@ -46,7 +47,8 @@ var AppModule = (function () {
                 achievementPreview_component_1.AchievementPreviewComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [profileService_1.ProfileService,
-                profileDetailsService_1.ProfileDetailsService]
+                profileDetailsService_1.ProfileDetailsService,
+                loginService_1.LoginService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

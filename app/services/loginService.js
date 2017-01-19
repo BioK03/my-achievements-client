@@ -18,19 +18,19 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var maService_1 = require('./maService');
-var ProfileDetailsService = (function (_super) {
-    __extends(ProfileDetailsService, _super);
-    function ProfileDetailsService(http) {
+var LoginService = (function (_super) {
+    __extends(LoginService, _super);
+    function LoginService(http) {
         _super.call(this, http);
     }
-    ProfileDetailsService.prototype.getProfile = function () {
-        return this.get("profileDetails", "");
+    LoginService.prototype.logUser = function (email, password) {
+        this.post("login", JSON.parse('{"login" :"' + email + '", "password": "' + password + '"}')).subscribe();
     };
-    ProfileDetailsService = __decorate([
+    LoginService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ProfileDetailsService);
-    return ProfileDetailsService;
+    ], LoginService);
+    return LoginService;
 }(maService_1.MAService));
-exports.ProfileDetailsService = ProfileDetailsService;
-//# sourceMappingURL=profileDetailsService.js.map
+exports.LoginService = LoginService;
+//# sourceMappingURL=loginService.js.map

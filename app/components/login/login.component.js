@@ -9,16 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var loginService_1 = require('../../services/loginService');
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(loginService) {
+        this.loginService = loginService;
     }
+    LoginComponent.prototype.loginAttempt = function (email, password) {
+        this.loginService.logUser(email, password);
+    };
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'login',
             templateUrl: "login.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [loginService_1.LoginService])
     ], LoginComponent);
     return LoginComponent;
 }());

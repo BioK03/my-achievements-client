@@ -6,15 +6,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-@Injectable()
-export class ProfileService {
+import { MAService } from './maService';
 
-  constructor(private http: Http) { this.http = http; }
+@Injectable()
+export class ProfileService extends MAService {
+
+  constructor(http: Http) { super(http); }
 
   getProfile() {
-      return this.http.get("http://localhost/json/profile.php")
-                      .map(res => res.json())
-                      .catch((error:any) => Observable.throw(error || 'Server error'));
+    
+      return this.get("profile", "");
   }
 
 }

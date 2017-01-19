@@ -17,7 +17,6 @@ import { ProfileDetails } from '../../classes/ProfileDetailsClass';
 export class ProfileDetailsComponent {
 
   profileDetails: ProfileDetails;
-  colorTab: SafeStyle[];
 
   constructor (private profileService: ProfileDetailsService, private sanitizer: DomSanitizer, private route: ActivatedRoute){
     
