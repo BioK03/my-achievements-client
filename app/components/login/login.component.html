@@ -1,12 +1,22 @@
-<h2>Se connecter à <span id="logoName">MY<span>ACHIEVEMENTS</span></span></h2>
+<h2>
+    Login to  
+    <span id="logoName">
+        MY
+        <span>ACHIEVEMENTS</span>
+    </span>
+</h2>
 <form>
-    <label for="login">E-mail</label><br/>
-    <input id="login" type="email" name="login" placeholder="john.doe@email.com" required/><br/><br/>
-    <label for="password">Mot de passe</label><br/>
-    <input id="password" type="password" name="password" placeholder="••••••••••••" required/><br/><br/>
-    <input type="submit" value="Se connecter"/>
+    <div *ngIf="error">
+        <div class="error">{{error}}</div>
+    </div>
+    
+    <label for="login">E-mail address</label><br/>
+    <input [(ngModel)]="login" name="login" type="email" placeholder="john.doe@email.com" required/><br/><br/>
+    <label for="password">Password</label><br/>
+    <input [(ngModel)]="password" name="password" type="password" placeholder="••••••••••••" required/><br/><br/>
+    <input (click)="loginAttempt()" type="submit" value="Login"/>
 </form><br/>
-<h4>Se connecter avec votre réseau social préféré :</h4><br/>
+<h4>Connect with your favourite social network :</h4><br/>
 <span>
     <a id="linkedin" href="#">
         <img src="dist/images/linkedin.png"/>
@@ -26,4 +36,6 @@
     <a id="twitter" href="#">
         <img src="dist/images/twitter.png"/>
     </a>
-</span>
+</span><br/><br/><br/>
+
+<a routerLink="/register">No account ? No social network ? Create an account now !</a>

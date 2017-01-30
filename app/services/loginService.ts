@@ -9,12 +9,13 @@ import 'rxjs/add/operator/catch';
 import { MAService } from './maService';
 
 @Injectable()
-export class ProfileDetailsService extends MAService {
+export class LoginService extends MAService {
 
   constructor(http: Http) { super(http); }
 
-  getProfile() {
-      return this.get("profileDetails", "");
+  logUser(email: String, password: String) {
+    this.post("login", JSON.parse('{"login" :"'+email+'", "password": "'+password+'"}')).subscribe();
   }
+  
 
 }
