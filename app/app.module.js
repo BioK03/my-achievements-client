@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
+var forms_1 = require('@angular/forms');
 var app_component_1 = require('./components/app.component');
 var home_component_1 = require('./components/home/home.component');
 var login_component_1 = require('./components/login/login.component');
+var logout_component_1 = require('./components/logout/logout.component');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var searchbar_component_1 = require('./components/searchbar/searchbar.component');
 var profileLink_component_1 = require('./components/profileLink/profileLink.component');
@@ -21,9 +23,14 @@ var profileDetails_component_1 = require('./components/profileDetails/profileDet
 var profileTabs_component_1 = require('./components/profileTabs/profileTabs.component');
 var tabDetails_component_1 = require('./components/tabDetails/tabDetails.component');
 var achievementPreview_component_1 = require('./components/achievementPreview/achievementPreview.component');
+var achievementDetails_component_1 = require('./components/achievementDetails/achievementDetails.component');
+var register_component_1 = require('./components/register/register.component');
+var editTabs_component_1 = require('./components/editTabs/editTabs.component');
+var editAchievements_component_1 = require('./components/editAchievements/editAchievements.component');
 var app_routing_1 = require('./app.routing');
 var loginService_1 = require('./services/loginService');
 var profileService_1 = require('./services/profileService');
+var searchService_1 = require('./services/searchService');
 var profileDetailsService_1 = require('./services/profileDetailsService');
 var AppModule = (function () {
     function AppModule() {
@@ -33,7 +40,8 @@ var AppModule = (function () {
             imports: [platform_browser_1.BrowserModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                app_routing_1.Routing],
+                app_routing_1.Routing,
+                forms_1.FormsModule],
             declarations: [app_component_1.AppComponent,
                 home_component_1.HomeComponent,
                 login_component_1.LoginComponent,
@@ -44,10 +52,16 @@ var AppModule = (function () {
                 profileTabs_component_1.ProfileTabsComponent,
                 tabDetails_component_1.TabDetailsComponent,
                 achievementPreview_component_1.AchievementPreviewComponent,
-                achievementPreview_component_1.AchievementPreviewComponent],
+                achievementPreview_component_1.AchievementPreviewComponent,
+                achievementDetails_component_1.AchievementDetailsComponent,
+                register_component_1.RegisterComponent,
+                logout_component_1.LogoutComponent,
+                editTabs_component_1.EditTabsComponent,
+                editAchievements_component_1.EditAchievementsComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [profileService_1.ProfileService,
                 profileDetailsService_1.ProfileDetailsService,
+                searchService_1.SearchService,
                 loginService_1.LoginService]
         }), 
         __metadata('design:paramtypes', [])

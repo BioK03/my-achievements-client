@@ -1,0 +1,22 @@
+<h2>
+    Register to
+    <span id="logoName">
+        MY
+        <span>ACHIEVEMENTS</span>
+    </span>
+</h2>
+<div *ngIf="error">
+    <div class="error">{{error}}</div>
+</div>
+<form>    
+    <label for="login">E-mail</label><br/>
+    <input [(ngModel)]="login" name="login" type="email" placeholder="john.doe@email.com" required/><br/><br/>
+    <label for="firstname">Firstname</label><br/>
+    <input [(ngModel)]="firstname" name="firstname" type="text" placeholder="John" required/><br/><br/>
+    <label for="lastname">Lastname</label><br/>
+    <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required/><br/><br/>
+    <label for="password">Password</label><br/>
+    <input [(ngModel)]="password" name="password" type="password" placeholder="••••••••••••" required/><br/><br/>
+    <input (click)="registerAttempt()" type="submit" value="Register"/>
+</form><br/>
+

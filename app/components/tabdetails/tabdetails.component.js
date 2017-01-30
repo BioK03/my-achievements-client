@@ -9,9 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var achievementListClass_1 = require('../../classes/achievementListClass');
 var TabDetailsComponent = (function () {
     function TabDetailsComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', achievementListClass_1.AchievementList)
+    ], TabDetailsComponent.prototype, "achievementList", void 0);
     TabDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -9,16 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var searchService_1 = require('../../services/searchService');
 var SearchbarComponent = (function () {
-    function SearchbarComponent() {
+    function SearchbarComponent(searchService) {
+        this.searchService = searchService;
+        this.words = "";
     }
+    SearchbarComponent.prototype.searchResults = function () {
+        this.searchService.getSearchResults(this.words).subscribe(function (res) {
+            console.log(res);
+        });
+    };
     SearchbarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'searchbar',
             templateUrl: "searchBar.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [searchService_1.SearchService])
     ], SearchbarComponent);
     return SearchbarComponent;
 }());

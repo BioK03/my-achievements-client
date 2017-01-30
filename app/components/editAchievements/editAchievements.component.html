@@ -1,0 +1,30 @@
+<h2>Manage your achievements here :</h2>
+
+<div *ngIf="profileDetails">
+    <div *ngFor="let achievementList of profileDetails.tabs">
+        <div [style.background]="achievementList.color" class="centeredMessage">
+            <span>
+                <p>
+                    <i class="{{achievementList.icon}}"></i>
+                    {{achievementList.name}}
+                </p>
+            </span>
+            <div *ngFor="let achievement of achievementList.achievements">
+                <div [style.background]="achievementList.color" class="achievement">
+                    <span>
+                        <p>
+                            <i class="{{achievement.icon}}"></i><br/>
+                            {{achievement.name}}
+                        </p>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <a id="addButton">
+        <p><i class="fa fa-plus"></i> Add achievement</p>
+    </a>
+    
+</div>

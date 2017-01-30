@@ -14,9 +14,16 @@ var ProfileLinkComponent = (function () {
     function ProfileLinkComponent(profileService) {
         var _this = this;
         this.profileService = profileService;
-        profileService.getProfile()
-            .subscribe(function (profile) {
-            _this.profile = profile;
+        this.profile = JSON.parse(localStorage.getItem("user"));
+        profileService.isConnected().subscribe(function (res) {
+            console.log(res);
+            if (res["message"] == true) {
+                _this.profile = JSON.parse(localStorage.getItem("user"));
+            }
+            else {
+                localStorage.removeItem("user");
+                _this.profile = null;
+            }
         });
     }
     ProfileLinkComponent = __decorate([

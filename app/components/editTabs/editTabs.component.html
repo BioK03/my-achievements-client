@@ -1,0 +1,19 @@
+<h2>Manage your tabs here :</h2>
+
+<div *ngIf="profileDetails">
+    <div *ngFor="let achievementList of profileDetails.tabs">
+        <div [style.background]="achievementList.color" class="achievementList">
+            <span>
+                <p>
+                    <i class="{{achievementList.icon}}"></i><br/>
+                    {{achievementList.name}}
+                </p>
+            </span>
+        </div>
+    </div>
+
+    <a id="addButton">
+        <p><i class="fa fa-plus"></i> Add tab</p>
+    </a>
+    
+</div>

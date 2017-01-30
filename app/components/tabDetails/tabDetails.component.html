@@ -1,0 +1,14 @@
+<div [style.background]="achievementList.color">
+    <span>
+        <p>
+            <i class="{{achievementList.icon}}"></i><br/>
+            {{achievementList.name}}
+        </p>
+    </span>
+    <span *ngFor="let achievement of achievementList.achievements">
+        <achievementpreview [achievement]="achievement"></achievementpreview>
+    </span>
+</div>
+<div *ngFor="let achievement of achievementList.achievements" [style.background]="achievementList.color">
+    <achievementdetails [achievement]="achievement"></achievementdetails>
+</div>

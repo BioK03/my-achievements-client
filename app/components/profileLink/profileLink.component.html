@@ -1,9 +1,34 @@
-<a routerLink="/profile/42" *ngIf="profile">
-    Hi, {{ profile.firstname }} !
-    <span>
-        <img src="{{profile.picture}}"/>
+<span id="profileConnected" *ngIf="profile">
+    <a href="/profile?id={{profile.id}}">
+        <p>Hi, {{ profile.firstname }} !</p>
+        <span>
+            <img src="{{profile.picture}}"/>
+        </span>
+    </a>
+    <span id="profileConnectedList">
+        <span id="triangleProfile"></span>
+        <ul>
+            <li>
+                <a href="/profile?id={{profile.id}}">
+                    <i class="fa fa-user"></i> Your profile
+                </a>
+            </li>
+            <li>
+                <a routerLink="/edit">
+                    <i class="fa fa-edit"></i> Edit your personal info
+                </a>
+            </li>
+            <li>
+                <a routerLink="/logout">
+                    <i class="fa fa-sign-out"></i> Logout
+                </a>
+            </li>
+        </ul>
     </span>
-</a>
+    
+    
+</span>
+
 <a routerLink="/login" *ngIf="!profile">
-    <a href="">Log in</a>
+    <i class="fa fa-sign-in"></i> Log in
 </a>

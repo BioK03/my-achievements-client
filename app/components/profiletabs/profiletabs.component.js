@@ -9,9 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var profileClass_1 = require('../../classes/profileClass');
 var ProfileTabsComponent = (function () {
     function ProfileTabsComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', profileClass_1.Profile)
+    ], ProfileTabsComponent.prototype, "user", void 0);
     ProfileTabsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

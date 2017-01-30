@@ -1,0 +1,8 @@
+
+
+<div>
+    <span id="profileresume"><p>Résumé</p></span>
+    <span  *ngFor="let achievementList of user.tabs" [style.background]="achievementList.color">
+        <p>{{achievementList.name}}</p>
+    </span>
+</div>

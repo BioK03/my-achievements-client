@@ -1,11 +1,13 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Http, HttpModule, JsonpModule } from '@angular/http';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent }   from './components/app.component';
 
 import { HomeComponent }   from './components/home/home.component';
 import { LoginComponent }   from './components/login/login.component';
+import { LogoutComponent }   from './components/logout/logout.component';
 import { NavbarComponent }   from './components/navbar/navbar.component';
 import { SearchbarComponent }   from './components/searchbar/searchbar.component';
 import { ProfileLinkComponent }   from './components/profileLink/profileLink.component';
@@ -14,11 +16,19 @@ import { ProfileTabsComponent }   from './components/profileTabs/profileTabs.com
 import { TabDetailsComponent }   from './components/tabDetails/tabDetails.component';
 import { AchievementPreviewComponent }   from './components/achievementPreview/achievementPreview.component';
 import { AchievementDetailsComponent }   from './components/achievementDetails/achievementDetails.component';
+import { RegisterComponent } from './components/register/register.component';
+import { EditTabsComponent } from './components/editTabs/editTabs.component';
+import { EditAchievementsComponent } from './components/editAchievements/editAchievements.component';
+
+import { TabFormComponent } from './components/tabForm/tabForm.component';
+import { AchievementFormComponent } from './components/achievementForm/achievementForm.component';
+import { ProfileFormComponent } from './components/profileForm/profileForm.component';
 
 import { Routing } from './app.routing';
 
 import { LoginService } from './services/loginService';
 import { ProfileService } from './services/profileService';
+import { SearchService } from './services/searchService';
 import { ProfileDetailsService } from './services/profileDetailsService';
 
 
@@ -26,7 +36,8 @@ import { ProfileDetailsService } from './services/profileDetailsService';
   imports:      [ BrowserModule,
                   HttpModule,
                   JsonpModule,
-                  Routing ],
+                  Routing,
+                  FormsModule ],
   declarations: [ AppComponent,
                   HomeComponent,
                   LoginComponent,
@@ -37,10 +48,16 @@ import { ProfileDetailsService } from './services/profileDetailsService';
                   ProfileTabsComponent,
                   TabDetailsComponent,
                   AchievementPreviewComponent,
-                  AchievementPreviewComponent ],
+                  AchievementPreviewComponent,
+                  AchievementDetailsComponent,
+                  RegisterComponent,
+                  LogoutComponent,
+                  EditTabsComponent,
+                  EditAchievementsComponent ],
   bootstrap: [ AppComponent ],
   providers: [ ProfileService,
                ProfileDetailsService,
+               SearchService,
                LoginService ]
 })
 

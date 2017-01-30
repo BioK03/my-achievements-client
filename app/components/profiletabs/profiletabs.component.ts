@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Profile } from '../../classes/profileClass';
 
 @Component({
   moduleId: module.id,
@@ -6,4 +8,9 @@ import { Component } from '@angular/core';
   templateUrl: "profileTabs.component.html"
 })
 
-export class ProfileTabsComponent { }
+export class ProfileTabsComponent {
+  @Input() user: Profile;
+
+  
+
+ }

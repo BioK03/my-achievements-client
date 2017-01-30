@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Achievement } from '../../classes/achievementClass';
 
 @Component({
   moduleId: module.id,
-  selector: 'achievementDetails',
+  selector: 'achievementdetails',
   templateUrl: "achievementDetails.component.html"
 })
 
-export class AchievementDetailsComponent { }
+export class AchievementDetailsComponent { 
+  @Input() achievement: Achievement;
+}

@@ -9,13 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var achievementClass_1 = require('../../classes/achievementClass');
 var AchievementDetailsComponent = (function () {
     function AchievementDetailsComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', achievementClass_1.Achievement)
+    ], AchievementDetailsComponent.prototype, "achievement", void 0);
     AchievementDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'achievementDetails',
+            selector: 'achievementdetails',
             templateUrl: "achievementDetails.component.html"
         }), 
         __metadata('design:paramtypes', [])

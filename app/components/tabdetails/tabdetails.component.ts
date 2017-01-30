@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { AchievementList } from '../../classes/achievementListClass';
 
 @Component({
   moduleId: module.id,
@@ -6,4 +8,8 @@ import { Component } from '@angular/core';
   templateUrl: "tabDetails.component.html"
 })
 
-export class TabDetailsComponent { }
+export class TabDetailsComponent {
+  @Input() achievementList: AchievementList;
+    
+
+ }

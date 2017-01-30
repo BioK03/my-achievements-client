@@ -1,20 +1,32 @@
+
 <div *ngIf="profileDetails">
-    <div class="profileName">
-        <img src="{{profileDetails.picture}}"/>
-        <span>{{profileDetails.firstname}} {{profileDetails.lastname}} ( {{profileDetails.nbAchievements}} <i class="fa fa-trophy"></i> )</span>
-        <div>
-            <span>Résumé</span>
-            <span  *ngFor="let achievementList of profileDetails.tabs" [style.background]="achievementList.color">
-                {{achievementList.name}}
-            </span>
-        </div>
+    <div id="profileManagement" *ngIf="personalProfile">
+        <a routerLink="/edittabs">
+            <i class="fa fa-th-list"></i><br/>
+            Manage your tabs
+        </a>
+        <a *ngIf="profileDetails.nbAchievements > 0" routerLink="/editachievements">
+            <i class="fa fa-trophy"></i><br/>
+            Manage your achievements
+        </a>
     </div>
-    <div class="achievementList" *ngFor="let achievementList of profileDetails.tabs" [style.background]="achievementList.color">
+    <img src="{{profileDetails.picture}}"/><!--
+    --><div id="profileDetailsDiv">
         <span>
-            <i class="{{achievementList.icon}}"></i>{{achievementList.name}}
+            <h3>{{profileDetails.firstname}} {{profileDetails.lastname}}</h3>
+            <p>{{profileDetails.nbAchievements}} <i class="fa fa-trophy"></i></p>
         </span>
-        <span *ngFor="let achievement of achievementList.achievements">
-            <i class="{{achievement.icon}}"></i> {{achievement.name}}
-        </span>
+        <profileTabs [user]="profileDetails"></profileTabs>
+    </div>
+    
+    <div class="centeredMessage" *ngIf="profileDetails.tabs.length == 0">
+        <span *ngIf="personalProfile == true">You have</span>
+        <span *ngIf="personalProfile == false">This user has</span>
+         no achievements :-(
+
+
+    </div>
+    <div *ngFor="let achievementList of profileDetails.tabs">
+        <tabDetails [achievementList]="achievementList"></tabDetails>
     </div>
 </div>

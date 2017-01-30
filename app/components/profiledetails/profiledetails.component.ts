@@ -15,29 +15,58 @@ import { ProfileDetails } from '../../classes/ProfileDetailsClass';
 })
 
 export class ProfileDetailsComponent {
+  error: String = "";
 
   profileDetails: ProfileDetails;
+  personalProfile: Boolean = false;
 
-  constructor (private profileService: ProfileDetailsService, private sanitizer: DomSanitizer, private route: ActivatedRoute){
+  constructor (private profileDetailsService: ProfileDetailsService, private sanitizer: DomSanitizer, private route: ActivatedRoute){
     
     
     
   }
 
+  parseRes(res) {
+    
+    if(res.length == 1){
+      // ERROR
+      switch(res) {
+        case "A":
+          this.error = "User not connected";
+          break;
+        case "B":
+          this.error = "Internal error, server unavailable";
+          break;
+        case "C":
+          this.error = "This user doesn't exist or you don't have the right to access it";
+          break;
+      }
+      console.error(this.error);
+    }
+    else {
+      this.saveProfileDetails(res);
+    }
+  }
+
   ngOnInit() {
-    this.route.params
-      .map(params => params['userId'])
+    this.route.queryParams
+      .map(params => params['id'])
       .subscribe((id)=>{
         console.log(id);
-        this.profileService.getProfile()
+        this.profileDetailsService.getProfile(id)
           .subscribe(
             profileDetails => {
-              this.profileDetails = profileDetails;
-              
-              console.log(profileDetails);
+              this.parseRes(profileDetails);
             }
           );
       });
+  }
+
+  saveProfileDetails(profileDetails) {
+    this.profileDetails = profileDetails;
+    if(localStorage.getItem("user") && this.profileDetails.id == JSON.parse(localStorage.getItem("user")).id) {
+      this.personalProfile = true;
+    }
   }
 
   

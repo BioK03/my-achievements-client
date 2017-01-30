@@ -15,14 +15,19 @@ export class ProfileLinkComponent {
   profile: Profile;
 
   constructor (private profileService: ProfileService){
-    profileService.getProfile()
-      .subscribe(
-        profile => {
-          this.profile = profile;
+    this.profile = JSON.parse(localStorage.getItem("user"));
+    profileService.isConnected().subscribe(
+      res => {
+        console.log(res);
+        if(res["message"] == true){
+          this.profile = JSON.parse(localStorage.getItem("user"));
+        } else {
+          localStorage.removeItem("user");
+          this.profile = null;
         }
-      );
+        
+      }
+    );
+     
   }
 }
-
-
-
