@@ -12,8 +12,14 @@ html, body {
   font-family: sans-serif;
 }
 
-a {
+a, a:focus, a:hover, a:visited {
   text-decoration: none;
+  color: $defaultcolor;
+}
+
+.centeredMessage {
+  font-size: 150%;
+  text-align: center;
 }
 
 form {
@@ -113,13 +119,19 @@ navbar {
   background-color: $defaultcolor;
   width: 100%;
   height: 3em;
-  display: block;
+  display: flex;
   position: fixed;
   z-index: 10;
 
   #logoName {
     color: #FFFFFF;
     font-size: 1.5em;
+    display: inline-block;
+    font-weight: 100 !important;
+
+    span {
+      font-weight: 600 !important;
+    }
   }
 
   div, a {
@@ -153,11 +165,13 @@ navbar {
 }
 
 
-login {
+
+login, register {
   margin: 0 auto;
   display: block;
   margin-left: 20%;
   font-size: 1.5em;
+  padding-top: 2em;
 
   span:not(:first-child){
     margin-left: 2em;
@@ -225,7 +239,7 @@ login {
 
 searchbar {
   position: relative;
-  top: -0.4em;
+  top: 0.6em;
   display: block;
   margin: 0 auto;
   width: 75%;
@@ -263,69 +277,369 @@ searchbar {
   }
 }
 
-#logoName {
-  display: inline-block;
-  font-weight: 100 !important;
-
-  span {
-    font-weight: 600 !important;
-  }
-}
-
 profilelink {
   width: 100%;
   display: block;
+  text-align: right;
+  z-index: 1;
 
-  a {
-    position: relative;
-    right: 6em;
+  > span {
     height: 100%;
     width: 100%;
     display: block;
     text-align: right;
+  }
+  
+
+  a:nth-child(2) {
+    display: inline-flex;
+    width: 1em;
     color: #FFFFFF;
+    position: relative;
+    top: -1.5em;
+
+    i {
+      margin: auto;
+    }
+  }
+
+  a, a:focus, a:hover, a:visited {
+    display: inline-block;
+    text-align: right;
+    color: #FFFFFF;
+    height: 100%;
+    margin-left: auto;
+
+    p {
+      position: relative;
+      top: -1.5em;
+      margin: 0;
+      display: inline-block;
+    }
 
     span {
-      position: absolute;
-      top: -1.5em;
-      right: -5em;
+      z-index: 2;
+      position: relative;
       height: 4em;
       width: 4em;
-      display: block;
+      display: inline-block;
       border-radius: 2em;
       background-color: #FFFFFF;
       
       img {
-        
+        background-color: #FFFFFF;
         height: 100%;
         width: 100%;
         display: inline-block;
         border-radius: 2em;
+        border: 1px solid $defaultcolor;
       }
     }    
+  }
+
+  #profileConnected:hover #profileConnectedList, #profileConnectedList:hover {
+    display: block;
+  }
+
+  span#profileConnectedList {
+    z-index: 1;
+    position: fixed;
+    top: 2.9em;
+    right: 0;
+    margin: 0;
+    text-align: right;
+    min-height: 5em;
+    display: none;
+    
+
+    > span#triangleProfile {
+      position: relative;
+      left: calc(-2em + 10px);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 10px;
+      border-color: transparent transparent $defaultcolor transparent;
+    }
+
+    > ul {
+      text-align: right;
+      list-style-type: none;
+      border: 1px solid $defaultcolor;
+      background-color: #FFFFFF;
+      margin: 0;
+      margin-top: 9px;
+      margin-right: 0.5em;
+      display: block;
+      padding: 0;
+      box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+
+      > li {
+        width: 100%;
+        display: block;
+        transition: 0.5s;
+
+        > a {
+          width: calc(100% - 1em);
+          padding: 0.5em;
+          display: block;
+          color: #000000;
+        }
+      }
+
+      > li:hover {
+        background-color: $defaultcolor;
+        > a {
+          color: #FFFFFF;
+        }
+        
+      }
+    }
   }
 }
 
 profiledetails {
   display: block;
   padding-top: 8em;
-
-  .profileName {
-
-  }
-
-  .achievementList {
-    display: block;
-    padding-top: 4em;
-    height: 8em;
-  }
-
-
-  
-}
-
-profiledetails > div > div {
-  display: block;
   width: 70%;
   margin-left: 15%;
+
+  div#profileManagement {
+    margin-bottom: 3em;
+    display: flex;
+    flex-direction: row;
+    //justify-content: space-around;
+    
+    > a {
+      flex: 1 1 auto;
+      background-color: $defaultcolor;
+      color: #FFFFFF;
+      padding: 0.5em;
+      margin: 0.5em;
+      text-align: center;
+      display: inline-block;
+
+      > i {
+        font-size: 300%;
+      }
+    }
+  }
+
+  > div > img {
+    background-color: #FFFFFF;
+    height: 8em;
+    width: 8em;
+    display: inline-block;
+    border-radius: 4em;
+    border: 1px solid $defaultcolor;
+    z-index: 2;
+    position: relative;
+  }
+
+  #profileDetailsDiv {
+    display: inline-flex;
+    flex-direction: column;
+    width: calc(100% - 8.2em);
+    position: relative;
+    left: -4em;
+    top: -6.1em;
+    height: 8em;
+
+    > span {
+      height: 66%;
+      padding-left: 4.5em;
+      justify-content: center;
+
+      > p {
+        font-size: 200%;
+        margin: 0;
+        height: 50%;
+      }
+
+      > h3 {
+        font-size: 200%;
+        font-weight: 600;
+        width: auto;
+        height: 50%;
+        display: block;
+        margin: 0;
+      }
+    }
+
+    > profiletabs {
+      height: 33%;
+
+      > div {
+        height: 100%;
+      }
+    }
+  }
+
+  profiletabs {
+    width: 100%;
+    display: block;
+
+    div {
+      display: flex;
+      flex-direction: row;
+
+      #profileresume {
+        background-color: $defaultcolor;
+      }
+
+      span {
+        width: 5em;
+        margin: auto;
+        flex: 1 1 auto;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        color: #FFFFFF;
+        text-align: center;
+        transition: width 0.5s;
+
+        p {
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  tabdetails {
+    display: block;    
+
+    > div {
+      margin-top: 4em;
+      height: 12em;
+      width: 100%;
+      display: block;
+
+      span:first-child {
+        font-size: 200%;
+        display: flex;
+        flex-direction: column;
+
+        > p {
+          margin: auto;
+        }
+
+      }
+
+      > span {
+        width: 25%;
+        height: 100%;
+        display: block;
+        text-align: center;
+        color: #FFFFFF;
+        float: left;
+      }
+
+      > achievementdetails {
+        height: 100%;
+        width: 100%;
+        display: block;
+      }
+
+      > achievementdetails > div {
+        height: 100%;
+        width: 100%;
+        display: block;
+
+        span:first-child {
+          font-size: 200%;
+          display: flex;
+          flex-direction: column;
+          width: 25%;
+          height: 100%;
+          text-align: center;
+          color: #FFFFFF;
+          float: left;
+
+          > p {
+            margin: auto;
+          }
+        }
+
+        > div {
+          float: left;
+          width: 75%;
+          display: block;
+        }
+
+        > div:nth-child(2) {
+          height: 75%;
+        }
+
+        > div:nth-child(3){
+          height: 25%;
+        }
+      }
+    }
+  }
+
+  > div > div {
+    display: block;
+    width: 100%;
+  }
+}
+
+achievementpreview {
+  height: 100%;
+  width: 100%;
+  display: block;
+
+  > img {
+    height: calc(100% - 3em);
+    width: 100%;
+    display: block;
+  }
+}
+
+.error {
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: #c9302c;
+  color: #FFFFFF;
+}
+
+edittabs, editachievements {
+  display: block;
+  padding-top: 8em;
+  width: 70%;
+  margin-left: 15%;
+
+  .achievementList {
+      margin-top: 4em;
+      height: 12em;
+      width: 100%;
+      display: block;
+      text-align: center;
+  }
+
+  .achievement {
+      margin-top: 4em;
+      height: 12em;
+      width: 100%;
+      display: block;
+      text-align: center;
+  }
+
+  #addButton {
+    height: 6em;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 4em;
+    border: 3px dashed #333333;
+    font-size: 200%;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+
+    > p {
+      margin: auto;
+    }
+
+  }
 }
