@@ -10,12 +10,23 @@ import { MAService } from './maService';
 
 @Injectable()
 export class LoginService extends MAService {
+  
 
   constructor(http: Http) { super(http); }
 
   logUser(email: String, password: String) {
-    this.post("login", JSON.parse('{"login" :"'+email+'", "password": "'+password+'"}')).subscribe();
+    return this.post("login", JSON.parse('{"login" :"'+email+'", "password": "'+password+'"}'));
   }
+
+  register(email: String, password: String, firstname: String, lastname: String) {
+    return this.post("register", JSON.parse(
+      '{"email" :"'+email+'", "plainPassword": "'+password+'", "firstname": "'+firstname+'", "lastname" : "'+lastname+'"}'));
+  }
+
+  logout() {
+    return this.del("logout");
+  }
+
   
 
 }

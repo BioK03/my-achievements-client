@@ -1,5 +1,5 @@
 import { Injectable }     from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -9,13 +9,12 @@ import 'rxjs/add/operator/catch';
 import { MAService } from './maService';
 
 @Injectable()
-export class ProfileDetailsService extends MAService {
+export class SearchService extends MAService {
 
   constructor(http: Http) { super(http); }
 
-  getProfile(id) {
-    return this.get("profileDetails", id);
-      
+  getSearchResults(words: string) {
+      return this.get("search", words);
   }
 
 }

@@ -13,48 +13,75 @@ export class MAService {
             case "login":
                 return basePath+"login";
             case "profileDetails":
-                return "http://localhost/json/profiledetails.php";
+                //return "http://localhost/json/profiledetails.php";
+                return basePath+"users/"
             case "profile":
                 return "http://localhost/json/profile.php";
+            case "register":
+                return basePath+"users";
+            case "search":
+                return basePath+"search/";
+            case "logout":
+                return basePath+"logout";
+            case "connection":
+                return basePath+"connected";
+            default:
+                return basePath+route;
         }
     }
 
-    extractData(res: Response) {
+    extractData(res: Response | any) {
+        console.log(res);
         if (res){
             if(res.status === 200){
                 return res.json()
             }else{
-                console.log("HTTP Error "+res.status);
-                return null;
+                console.log("HTTP Error "+res.status+" ");
+                switch(res.status){
+
+                    case 401:
+                        return "A";
+                    case 500:
+                        return "B";
+                    case 0:
+                        return "B";
+                    case 400:
+                        return "C";
+                }
             }
         }
     }
 
-    handleError(error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
-
-    get(path, data) {
-        return this.localHttp.get(this.getPath(path)+data)
-                      .map(res => this.extractData(res))
-                      .catch(this.handleError);
-    }
-
-    post(path, data) {
+    get(path, data = "") {
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        return this.localHttp.post(this.getPath(path), { name }, options)
-                    .map(res => this.extractData(res))
-                    .catch(this.handleError);
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.get(this.getPath(path)+data, options)
+                      .map(this.extractData)
+                      .catch(this.extractData);
+    }
+
+    post(path, data = "") {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.post(this.getPath(path), data, options)
+                    .map(this.extractData)
+                    .catch(this.extractData);
+    }
+
+    del(path, data = "") {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.delete(this.getPath(path)+data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
+    }
+
+    put(path, data = ""){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.put(this.getPath(path), data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
     }
 
 

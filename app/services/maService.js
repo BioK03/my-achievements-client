@@ -1,6 +1,5 @@
 "use strict";
 var http_1 = require('@angular/http');
-var Observable_1 = require('rxjs/Observable');
 var MAService = (function () {
     function MAService(localhttp) {
         this.localHttp = localhttp;
@@ -11,48 +10,74 @@ var MAService = (function () {
             case "login":
                 return basePath + "login";
             case "profileDetails":
-                return "http://localhost/json/profiledetails.php";
+                //return "http://localhost/json/profiledetails.php";
+                return basePath + "users/";
             case "profile":
                 return "http://localhost/json/profile.php";
+            case "register":
+                return basePath + "users";
+            case "search":
+                return basePath + "search/";
+            case "logout":
+                return basePath + "logout";
+            case "connection":
+                return basePath + "connected";
+            default:
+                return basePath + route;
         }
     };
     MAService.prototype.extractData = function (res) {
+        console.log(res);
         if (res) {
             if (res.status === 200) {
                 return res.json();
             }
             else {
-                console.log("HTTP Error " + res.status);
-                return null;
+                console.log("HTTP Error " + res.status + " ");
+                switch (res.status) {
+                    case 401:
+                        return "A";
+                    case 500:
+                        return "B";
+                    case 0:
+                        return "B";
+                    case 400:
+                        return "C";
+                }
             }
         }
     };
-    MAService.prototype.handleError = function (error) {
-        var errMsg;
-        if (error instanceof http_1.Response) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
-            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
-        }
-        else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable_1.Observable.throw(errMsg);
-    };
     MAService.prototype.get = function (path, data) {
-        var _this = this;
-        return this.localHttp.get(this.getPath(path) + data)
-            .map(function (res) { return _this.extractData(res); })
-            .catch(this.handleError);
+        if (data === void 0) { data = ""; }
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.get(this.getPath(path) + data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
     };
     MAService.prototype.post = function (path, data) {
-        var _this = this;
+        if (data === void 0) { data = ""; }
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.localHttp.post(this.getPath(path), { name: name }, options)
-            .map(function (res) { return _this.extractData(res); })
-            .catch(this.handleError);
+        var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.post(this.getPath(path), data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
+    };
+    MAService.prototype.del = function (path, data) {
+        if (data === void 0) { data = ""; }
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.delete(this.getPath(path) + data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
+    };
+    MAService.prototype.put = function (path, data) {
+        if (data === void 0) { data = ""; }
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.put(this.getPath(path), data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
     };
     return MAService;
 }());

@@ -24,7 +24,13 @@ var LoginService = (function (_super) {
         _super.call(this, http);
     }
     LoginService.prototype.logUser = function (email, password) {
-        this.post("login", JSON.parse('{"login" :"' + email + '", "password": "' + password + '"}')).subscribe();
+        return this.post("login", JSON.parse('{"login" :"' + email + '", "password": "' + password + '"}'));
+    };
+    LoginService.prototype.register = function (email, password, firstname, lastname) {
+        return this.post("register", JSON.parse('{"email" :"' + email + '", "plainPassword": "' + password + '", "firstname": "' + firstname + '", "lastname" : "' + lastname + '"}'));
+    };
+    LoginService.prototype.logout = function () {
+        return this.del("logout");
     };
     LoginService = __decorate([
         core_1.Injectable(), 

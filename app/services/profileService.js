@@ -23,8 +23,16 @@ var ProfileService = (function (_super) {
     function ProfileService(http) {
         _super.call(this, http);
     }
+    ProfileService.prototype.isConnected = function () {
+        return this.get("connection");
+    };
     ProfileService.prototype.getProfile = function () {
-        return this.get("profile", "");
+        if (localStorage.getItem("user")) {
+            return localStorage.getItem("user");
+        }
+        else {
+            return null;
+        }
     };
     ProfileService = __decorate([
         core_1.Injectable(), 

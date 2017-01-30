@@ -13,9 +13,16 @@ export class ProfileService extends MAService {
 
   constructor(http: Http) { super(http); }
 
+  isConnected() {
+   return this.get("connection");
+  }
+
   getProfile() {
-    
-      return this.get("profile", "");
+    if(localStorage.getItem("user")){
+      return localStorage.getItem("user");
+    } else {
+      return null;
+    }
   }
 
 }
