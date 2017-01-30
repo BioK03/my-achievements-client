@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { ProfileService } from '../../services/ProfileService';
+import { ProfileService } from '../../services/ProfileService/ProfileService';
 import { Profile } from '../../classes/ProfileClass';
 
 @Component({
@@ -18,7 +18,6 @@ export class ProfileLinkComponent {
     this.profile = JSON.parse(localStorage.getItem("user"));
     profileService.isConnected().subscribe(
       res => {
-        console.log(res);
         if(res["message"] == true){
           this.profile = JSON.parse(localStorage.getItem("user"));
         } else {

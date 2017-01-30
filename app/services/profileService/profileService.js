@@ -17,26 +17,28 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-var maService_1 = require('./maService');
-var LoginService = (function (_super) {
-    __extends(LoginService, _super);
-    function LoginService(http) {
+var maService_1 = require('../maService');
+var ProfileService = (function (_super) {
+    __extends(ProfileService, _super);
+    function ProfileService(http) {
         _super.call(this, http);
     }
-    LoginService.prototype.logUser = function (email, password) {
-        return this.post("login", JSON.parse('{"login" :"' + email + '", "password": "' + password + '"}'));
+    ProfileService.prototype.isConnected = function () {
+        return this.get("connection");
     };
-    LoginService.prototype.register = function (email, password, firstname, lastname) {
-        return this.post("register", JSON.parse('{"email" :"' + email + '", "plainPassword": "' + password + '", "firstname": "' + firstname + '", "lastname" : "' + lastname + '"}'));
+    ProfileService.prototype.getProfile = function () {
+        if (localStorage.getItem("user")) {
+            return localStorage.getItem("user");
+        }
+        else {
+            return null;
+        }
     };
-    LoginService.prototype.logout = function () {
-        return this.del("logout");
-    };
-    LoginService = __decorate([
+    ProfileService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], LoginService);
-    return LoginService;
+    ], ProfileService);
+    return ProfileService;
 }(maService_1.MAService));
-exports.LoginService = LoginService;
-//# sourceMappingURL=loginService.js.map
+exports.ProfileService = ProfileService;
+//# sourceMappingURL=profileService.js.map

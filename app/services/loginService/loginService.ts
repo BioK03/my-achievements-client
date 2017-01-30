@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { MAService } from './maService';
+import { MAService } from '../maService';
 
 @Injectable()
 export class LoginService extends MAService {

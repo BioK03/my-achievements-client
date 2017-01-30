@@ -17,28 +17,23 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-var maService_1 = require('./maService');
-var ProfileService = (function (_super) {
-    __extends(ProfileService, _super);
-    function ProfileService(http) {
+var maService_1 = require('../maService');
+var ProfileDetailsService = (function (_super) {
+    __extends(ProfileDetailsService, _super);
+    function ProfileDetailsService(http) {
         _super.call(this, http);
     }
-    ProfileService.prototype.isConnected = function () {
-        return this.get("connection");
+    ProfileDetailsService.prototype.getProfile = function (id) {
+        return this.get("profileDetails", id);
     };
-    ProfileService.prototype.getProfile = function () {
-        if (localStorage.getItem("user")) {
-            return localStorage.getItem("user");
-        }
-        else {
-            return null;
-        }
+    ProfileDetailsService.prototype.setEdit = function (id, firstname, lastname) {
+        return this.patch("users/" + id, JSON.parse('{"firstname": "' + firstname + '", "lastname" : "' + lastname + '"}'));
     };
-    ProfileService = __decorate([
+    ProfileDetailsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ProfileService);
-    return ProfileService;
+    ], ProfileDetailsService);
+    return ProfileDetailsService;
 }(maService_1.MAService));
-exports.ProfileService = ProfileService;
-//# sourceMappingURL=profileService.js.map
+exports.ProfileDetailsService = ProfileDetailsService;
+//# sourceMappingURL=profileDetailsService.js.map

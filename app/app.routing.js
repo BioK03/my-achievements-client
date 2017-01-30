@@ -7,6 +7,9 @@ var register_component_1 = require('./components/register/register.component');
 var profileDetails_component_1 = require('./components/profileDetails/profileDetails.component');
 var editAchievements_component_1 = require('./components/editAchievements/editAchievements.component');
 var editTabs_component_1 = require('./components/editTabs/editTabs.component');
+var profileForm_component_1 = require('./components/profileForm/profileForm.component');
+var tabForm_component_1 = require('./components/tabForm/tabForm.component');
+var achievementForm_component_1 = require('./components/achievementForm/achievementForm.component');
 var appRoutes = [
     {
         path: '',
@@ -35,6 +38,18 @@ var appRoutes = [
     {
         path: 'editachievements',
         component: editAchievements_component_1.EditAchievementsComponent
+    },
+    {
+        path: 'editprofile',
+        component: profileForm_component_1.ProfileFormComponent
+    },
+    {
+        path: 'formtab',
+        component: tabForm_component_1.TabFormComponent
+    },
+    {
+        path: 'formachievement',
+        component: achievementForm_component_1.AchievementFormComponent
     }
 ];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);

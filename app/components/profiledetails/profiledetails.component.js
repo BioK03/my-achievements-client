@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
-var profileDetailsService_1 = require('../../services/profileDetailsService');
+var profileDetailsService_1 = require('../../services/profileDetailsService/profileDetailsService');
 var ProfileDetailsComponent = (function () {
     function ProfileDetailsComponent(profileDetailsService, sanitizer, route) {
         this.profileDetailsService = profileDetailsService;
@@ -42,14 +42,20 @@ var ProfileDetailsComponent = (function () {
     };
     ProfileDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.queryParams
-            .map(function (params) { return params['id']; })
-            .subscribe(function (id) {
-            console.log(id);
-            _this.profileDetailsService.getProfile(id)
-                .subscribe(function (profileDetails) {
-                _this.parseRes(profileDetails);
-            });
+        this.route.queryParams.subscribe(function (params) {
+            if (params['id']) {
+                _this.profileDetailsService.getProfile(params['id'])
+                    .subscribe(function (profileDetails) {
+                    _this.parseRes(profileDetails);
+                });
+            }
+            else {
+                var id = JSON.parse(localStorage.getItem("user")).id;
+                _this.profileDetailsService.getProfile(id)
+                    .subscribe(function (profileDetails) {
+                    _this.parseRes(profileDetails);
+                });
+            }
         });
     };
     ProfileDetailsComponent.prototype.saveProfileDetails = function (profileDetails) {

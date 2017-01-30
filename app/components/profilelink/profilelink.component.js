@@ -9,14 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ProfileService_1 = require('../../services/ProfileService');
+var ProfileService_1 = require('../../services/ProfileService/ProfileService');
 var ProfileLinkComponent = (function () {
     function ProfileLinkComponent(profileService) {
         var _this = this;
         this.profileService = profileService;
         this.profile = JSON.parse(localStorage.getItem("user"));
         profileService.isConnected().subscribe(function (res) {
-            console.log(res);
             if (res["message"] == true) {
                 _this.profile = JSON.parse(localStorage.getItem("user"));
             }

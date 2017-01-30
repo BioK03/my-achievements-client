@@ -27,11 +27,14 @@ var achievementDetails_component_1 = require('./components/achievementDetails/ac
 var register_component_1 = require('./components/register/register.component');
 var editTabs_component_1 = require('./components/editTabs/editTabs.component');
 var editAchievements_component_1 = require('./components/editAchievements/editAchievements.component');
+var tabForm_component_1 = require('./components/tabForm/tabForm.component');
+var achievementForm_component_1 = require('./components/achievementForm/achievementForm.component');
+var profileForm_component_1 = require('./components/profileForm/profileForm.component');
 var app_routing_1 = require('./app.routing');
-var loginService_1 = require('./services/loginService');
-var profileService_1 = require('./services/profileService');
-var searchService_1 = require('./services/searchService');
-var profileDetailsService_1 = require('./services/profileDetailsService');
+var loginService_1 = require('./services/loginService/loginService');
+var profileService_1 = require('./services/profileService/profileService');
+var searchService_1 = require('./services/searchService/searchService');
+var profileDetailsService_1 = require('./services/profileDetailsService/profileDetailsService');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -57,7 +60,10 @@ var AppModule = (function () {
                 register_component_1.RegisterComponent,
                 logout_component_1.LogoutComponent,
                 editTabs_component_1.EditTabsComponent,
-                editAchievements_component_1.EditAchievementsComponent],
+                editAchievements_component_1.EditAchievementsComponent,
+                profileForm_component_1.ProfileFormComponent,
+                tabForm_component_1.TabFormComponent,
+                achievementForm_component_1.AchievementFormComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [profileService_1.ProfileService,
                 profileDetailsService_1.ProfileDetailsService,

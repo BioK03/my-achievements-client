@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { ProfileDetailsService } from '../services/profileDetailsService';
-import { ProfileService } from '../services/profileService';
+import { ProfileDetailsService } from '../services/profileDetailsService/profileDetailsService';
+import { ProfileService } from '../services/profileService/profileService';
 
 @Component({
   moduleId: module.id,

@@ -6,15 +6,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { MAService } from './maService';
+import { MAService } from '../maService';
 
 @Injectable()
-export class SearchService extends MAService {
+export class AchievementService extends MAService {
 
   constructor(http: Http) { super(http); }
 
-  getSearchResults(words: string) {
-      return this.get("search", words);
-  }
+  
+
+  
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 
-import { LoginService } from '../../services/loginService';
+import { LoginService } from '../../services/loginService/loginService';
 
 
 @Component({

@@ -3,7 +3,7 @@ import { Response } from '@angular/http';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { ProfileDetailsService } from '../../services/profileDetailsService';
+import { ProfileDetailsService } from '../../services/profileDetailsService/profileDetailsService';
 import { ProfileDetails } from '../../classes/ProfileDetailsClass';
 
 
@@ -49,17 +49,24 @@ export class ProfileDetailsComponent {
   }
 
   ngOnInit() {
-    this.route.queryParams
-      .map(params => params['id'])
-      .subscribe((id)=>{
-        console.log(id);
-        this.profileDetailsService.getProfile(id)
+    this.route.queryParams.subscribe((params)=> {
+      if(params['id']){
+        this.profileDetailsService.getProfile(params['id'])
           .subscribe(
             profileDetails => {
               this.parseRes(profileDetails);
             }
           );
-      });
+      } else {
+        let id = JSON.parse(localStorage.getItem("user")).id;
+          this.profileDetailsService.getProfile(id)
+            .subscribe(
+              profileDetails => {
+                this.parseRes(profileDetails);
+              }
+            );
+      }
+    });
   }
 
   saveProfileDetails(profileDetails) {

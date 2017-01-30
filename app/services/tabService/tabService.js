@@ -17,20 +17,17 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-var maService_1 = require('./maService');
-var SearchService = (function (_super) {
-    __extends(SearchService, _super);
-    function SearchService(http) {
+var maService_1 = require('../maService');
+var TabService = (function (_super) {
+    __extends(TabService, _super);
+    function TabService(http) {
         _super.call(this, http);
     }
-    SearchService.prototype.getSearchResults = function (words) {
-        return this.get("search", words);
-    };
-    SearchService = __decorate([
+    TabService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], SearchService);
-    return SearchService;
+    ], TabService);
+    return TabService;
 }(maService_1.MAService));
-exports.SearchService = SearchService;
-//# sourceMappingURL=searchService.js.map
+exports.TabService = TabService;
+//# sourceMappingURL=tabService.js.map

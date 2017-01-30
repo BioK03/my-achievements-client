@@ -128,6 +128,8 @@ navbar {
     font-size: 1.5em;
     display: inline-block;
     font-weight: 100 !important;
+    position: relative;
+    top: -1em;
 
     span {
       font-weight: 600 !important;
@@ -137,6 +139,13 @@ navbar {
   div, a {
     display: inline-block;
     width: 33.33%;
+  }
+
+  #logoImg {
+    height: 4em;
+    width: 4em;
+    display: inline-block;
+    margin-left: 1em;
   }
 
 
@@ -243,6 +252,21 @@ searchbar {
   display: block;
   margin: 0 auto;
   width: 75%;
+
+  div {
+    position: relative;
+    top: -1.2em;
+    width: calc(100% - 2.3em);
+    display: block;
+    background-color: #DDDDDD;
+
+    a {
+      display: block;
+      width: 100%;
+      font-size: 125%;
+
+    }
+  }
 
   form {
     display: block;
@@ -425,7 +449,7 @@ profiledetails {
     }
   }
 
-  > div > img {
+  > div > span > img {
     background-color: #FFFFFF;
     height: 8em;
     width: 8em;
@@ -439,10 +463,10 @@ profiledetails {
   #profileDetailsDiv {
     display: inline-flex;
     flex-direction: column;
-    width: calc(100% - 8.2em);
+    width: calc(100% - 4.1em);
     position: relative;
-    left: -4em;
-    top: -6.1em;
+    left: 4em;
+    top: -8em;
     height: 8em;
 
     > span {
@@ -642,4 +666,25 @@ edittabs, editachievements {
     }
 
   }
+}
+
+profileform {
+  display: block;
+  padding-top: 8em;
+  width: 70%;
+  margin-left: 15%;
+}
+
+tabform {
+  display: block;
+  padding-top: 8em;
+  width: 70%;
+  margin-left: 15%;
+}
+
+achievementform {
+  display: block;
+  padding-top: 8em;
+  width: 70%;
+  margin-left: 15%;
 }

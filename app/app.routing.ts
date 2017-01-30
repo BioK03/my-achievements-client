@@ -8,6 +8,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileDetailsComponent } from './components/profileDetails/profileDetails.component';
 import { EditAchievementsComponent } from './components/editAchievements/editAchievements.component';
 import { EditTabsComponent } from './components/editTabs/editTabs.component';
+import { ProfileFormComponent } from './components/profileForm/profileForm.component';
+import { TabFormComponent } from './components/tabForm/tabForm.component';
+import { AchievementFormComponent } from './components/achievementForm/achievementForm.component';
 
 const appRoutes: Routes = [
     {
@@ -37,6 +40,18 @@ const appRoutes: Routes = [
     {
         path: 'editachievements',
         component: EditAchievementsComponent
+    },
+    {
+        path: 'editprofile',
+        component: ProfileFormComponent
+    },
+    {
+        path: 'formtab',
+        component: TabFormComponent
+    },
+    {
+        path: 'formachievement',
+        component: AchievementFormComponent
     }
 ];
 

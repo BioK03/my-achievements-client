@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ProfileDetailsService } from '../../services/profileDetailsService';
+import { ProfileDetailsService } from '../../services/profileDetailsService/profileDetailsService';
 import { ProfileDetails } from '../../classes/ProfileDetailsClass';
 
 @Component({

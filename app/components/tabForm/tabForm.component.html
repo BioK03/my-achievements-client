@@ -1,0 +1,17 @@
+
+<h2 *ngIf="addOrEdit">Add a tab</h2>
+<h2 *ngIf="!addOrEdit">Edit this tab</h2>
+
+<div *ngIf="error">
+    <div class="error">{{error}}</div>
+</div>
+<form>    
+    <label for="name">Name</label><br/>
+    <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required/><br/><br/>
+    <label for="color">Color</label><br/>
+    <input [(ngModel)]="color" name="color" type="color" required/><br/><br/>
+    <label for="icon">Icon</label><br/>
+    <input [(ngModel)]="icon" name="icon" type="text" required/><br/><br/>
+    <input (click)="tabAttempt()" type="submit" value="Submit"/>
+</form>
+

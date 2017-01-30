@@ -9,16 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var TabFormComponent = (function () {
-    function TabFormComponent() {
+    function TabFormComponent(route) {
+        var _this = this;
+        this.route = route;
+        this.addOrEdit = true;
+        this.id = 0;
+        this.name = "";
+        this.color = "";
+        this.icon = "";
+        this.route.queryParams.subscribe(function (params) {
+            if (params['id']) {
+                _this.addOrEdit = false;
+            }
+            else {
+            }
+        });
     }
+    TabFormComponent.prototype.tabAttempt = function () {
+    };
     TabFormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'tabform',
             templateUrl: "tabForm.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], TabFormComponent);
     return TabFormComponent;
 }());

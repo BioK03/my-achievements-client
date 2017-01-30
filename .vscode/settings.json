@@ -1,3 +1,9 @@
 {
-    "typescript.tsdk": "./node_modules/typescript/lib"
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "line-counter.excludes": [
+        "**/node_modules/**"
+    ],
+    "line-counter.includes": [
+        "**/*.ts"
+    ]
 }

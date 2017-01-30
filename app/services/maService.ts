@@ -14,7 +14,7 @@ export class MAService {
                 return basePath+"login";
             case "profileDetails":
                 //return "http://localhost/json/profiledetails.php";
-                return basePath+"users/"
+                return basePath+"userprofiles/"
             case "profile":
                 return "http://localhost/json/profile.php";
             case "register":
@@ -31,7 +31,6 @@ export class MAService {
     }
 
     extractData(res: Response | any) {
-        console.log(res);
         if (res){
             if(res.status === 200){
                 return res.json()
@@ -76,10 +75,18 @@ export class MAService {
             .catch(this.extractData);
     }
 
-    put(path, data = ""){
+    put(path, data = "") {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers, withCredentials: true });
         return this.localHttp.put(this.getPath(path), data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
+    }
+
+    patch(path, data = "") {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.patch(this.getPath(path), data, options)
             .map(this.extractData)
             .catch(this.extractData);
     }

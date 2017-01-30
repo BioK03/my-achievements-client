@@ -26,10 +26,10 @@ import { ProfileFormComponent } from './components/profileForm/profileForm.compo
 
 import { Routing } from './app.routing';
 
-import { LoginService } from './services/loginService';
-import { ProfileService } from './services/profileService';
-import { SearchService } from './services/searchService';
-import { ProfileDetailsService } from './services/profileDetailsService';
+import { LoginService } from './services/loginService/loginService';
+import { ProfileService } from './services/profileService/profileService';
+import { SearchService } from './services/searchService/searchService';
+import { ProfileDetailsService } from './services/profileDetailsService/profileDetailsService';
 
 
 @NgModule({
@@ -53,7 +53,10 @@ import { ProfileDetailsService } from './services/profileDetailsService';
                   RegisterComponent,
                   LogoutComponent,
                   EditTabsComponent,
-                  EditAchievementsComponent ],
+                  EditAchievementsComponent,
+                  ProfileFormComponent,
+                  TabFormComponent,
+                  AchievementFormComponent ],
   bootstrap: [ AppComponent ],
   providers: [ ProfileService,
                ProfileDetailsService,

@@ -11,7 +11,7 @@ var MAService = (function () {
                 return basePath + "login";
             case "profileDetails":
                 //return "http://localhost/json/profiledetails.php";
-                return basePath + "users/";
+                return basePath + "userprofiles/";
             case "profile":
                 return "http://localhost/json/profile.php";
             case "register":
@@ -27,7 +27,6 @@ var MAService = (function () {
         }
     };
     MAService.prototype.extractData = function (res) {
-        console.log(res);
         if (res) {
             if (res.status === 200) {
                 return res.json();
@@ -76,6 +75,14 @@ var MAService = (function () {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
         return this.localHttp.put(this.getPath(path), data, options)
+            .map(this.extractData)
+            .catch(this.extractData);
+    };
+    MAService.prototype.patch = function (path, data) {
+        if (data === void 0) { data = ""; }
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
+        return this.localHttp.patch(this.getPath(path), data, options)
             .map(this.extractData)
             .catch(this.extractData);
     };

@@ -9,16 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var AchievementFormComponent = (function () {
-    function AchievementFormComponent() {
+    function AchievementFormComponent(route) {
+        var _this = this;
+        this.route = route;
+        this.addOrEdit = true;
+        this.id = 0;
+        this.name = "";
+        this.color = "";
+        this.icon = "";
+        this.route.queryParams.subscribe(function (params) {
+            if (params['id']) {
+                _this.addOrEdit = false;
+            }
+            else {
+            }
+        });
     }
+    AchievementFormComponent.prototype.achievementAttempt = function () {
+    };
     AchievementFormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'achievementform',
             templateUrl: "achievementForm.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], AchievementFormComponent);
     return AchievementFormComponent;
 }());

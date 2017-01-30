@@ -9,14 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var searchService_1 = require('../../services/searchService');
+var searchService_1 = require('../../services/searchService/searchService');
 var SearchbarComponent = (function () {
     function SearchbarComponent(searchService) {
         this.searchService = searchService;
         this.words = "";
+        this.search = require('../../../dist/scripts/all.js');
+        console.log(this.search);
+        new this.search();
     }
     SearchbarComponent.prototype.searchResults = function () {
+        var _this = this;
         this.searchService.getSearchResults(this.words).subscribe(function (res) {
+            _this.profiles = res;
             console.log(res);
         });
     };

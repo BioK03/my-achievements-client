@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { MAService } from './maService';
+import { MAService } from '../maService';
 
 @Injectable()
 export class ProfileService extends MAService {
@@ -24,5 +24,7 @@ export class ProfileService extends MAService {
       return null;
     }
   }
+
+  
 
 }

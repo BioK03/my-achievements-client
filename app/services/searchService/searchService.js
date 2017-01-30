@@ -17,20 +17,20 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-var maService_1 = require('./maService');
-var ProfileDetailsService = (function (_super) {
-    __extends(ProfileDetailsService, _super);
-    function ProfileDetailsService(http) {
+var maService_1 = require('../maService');
+var SearchService = (function (_super) {
+    __extends(SearchService, _super);
+    function SearchService(http) {
         _super.call(this, http);
     }
-    ProfileDetailsService.prototype.getProfile = function (id) {
-        return this.get("profileDetails", id);
+    SearchService.prototype.getSearchResults = function (words) {
+        return this.get("search", words);
     };
-    ProfileDetailsService = __decorate([
+    SearchService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ProfileDetailsService);
-    return ProfileDetailsService;
+    ], SearchService);
+    return SearchService;
 }(maService_1.MAService));
-exports.ProfileDetailsService = ProfileDetailsService;
-//# sourceMappingURL=profileDetailsService.js.map
+exports.SearchService = SearchService;
+//# sourceMappingURL=searchService.js.map

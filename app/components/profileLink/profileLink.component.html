@@ -1,20 +1,23 @@
 <span id="profileConnected" *ngIf="profile">
-    <a href="/profile?id={{profile.id}}">
+    <a routerLink="/profile">
         <p>Hi, {{ profile.firstname }} !</p>
-        <span>
-            <img src="{{profile.picture}}"/>
+        <span *ngIf="profile.picture">
+            <img src="{{ profile.picture }}"/>
+        </span>
+        <span *ngIf="!profile.picture">
+            <img src="/dist/images/profilepicture.png"/>
         </span>
     </a>
     <span id="profileConnectedList">
         <span id="triangleProfile"></span>
         <ul>
             <li>
-                <a href="/profile?id={{profile.id}}">
+                <a routerLink="/profile">
                     <i class="fa fa-user"></i> Your profile
                 </a>
             </li>
             <li>
-                <a routerLink="/edit">
+                <a routerLink="/editprofile">
                     <i class="fa fa-edit"></i> Edit your personal info
                 </a>
             </li>

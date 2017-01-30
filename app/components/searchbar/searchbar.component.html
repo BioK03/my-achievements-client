@@ -1,4 +1,11 @@
 <form>
-<input [(ngModel)]="words" type="text" name="search" placeholder="Search..."/><!--
+<input [(ngModel)]="words" type="text" name="search" id="searchBarInput" placeholder="Search..." autocomplete="off"/><!--
 --><button (click)="searchResults()" type="submit"><i class="fa fa-search"></i></button>
 </form>
+
+<div *ngIf="profiles">
+
+    <a *ngFor="let profile of profiles" href="/profile?id={{profile.id}}">
+        {{profile.firstname}} {{profile.lastname}}
+    </a>
+</div>
