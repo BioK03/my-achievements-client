@@ -1,14 +1,14 @@
 <span id="profileConnected" *ngIf="profile">
-    <a routerLink="/profile">
-        <p>Hi, {{ profile.firstname }} !</p>
-        <span *ngIf="profile.picture">
+    <a class="nobr">
+        <p (click)="changeVisibleList()">Hi, {{ profile.firstname }} !</p>
+        <span *ngIf="profile.picture" (click)="changeVisibleList()">
             <img src="{{ profile.picture }}"/>
         </span>
-        <span *ngIf="!profile.picture">
+        <span *ngIf="!profile.picture" (click)="changeVisibleList()">
             <img src="/dist/images/profilepicture.png"/>
         </span>
     </a>
-    <span id="profileConnectedList">
+    <span id="profileConnectedList" *ngIf="visibleList">
         <span id="triangleProfile"></span>
         <ul>
             <li>
@@ -32,6 +32,8 @@
     
 </span>
 
-<a routerLink="/login" *ngIf="!profile">
-    <i class="fa fa-sign-in"></i> Log in
-</a>
+<span id="profileLogin" class="nobr" *ngIf="!profile">
+    <a routerLink="/login">
+        <i class="fa fa-sign-in"></i> Log in
+    </a>
+</span>

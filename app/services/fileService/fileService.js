@@ -15,34 +15,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var maService_1 = require('../maService');
-var TabService = (function (_super) {
-    __extends(TabService, _super);
-    function TabService(http) {
+var FileService = (function (_super) {
+    __extends(FileService, _super);
+    function FileService(http) {
         _super.call(this, http);
     }
-    TabService.prototype.getAllTabs = function (idUser) {
-        return this.get("users/" + idUser + "/tabs");
+    FileService.prototype.makeFileRequest = function (url, params, files) {
+        return Observable_1.Observable.create(function (observer) {
+            var formData = new FormData(), xhr = new XMLHttpRequest();
+            for (var i = 0; i < files.length; i++) {
+                formData.append("uploads" + i, files[i], files[i].name);
+            }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        observer.next(JSON.parse(xhr.response));
+                        observer.complete();
+                    }
+                    else {
+                        observer.error(xhr.response);
+                    }
+                }
+            };
+            xhr.open('POST', url, true);
+            xhr.send(formData);
+        });
     };
-    TabService.prototype.getTab = function (idUser, id) {
-        return this.get("users/" + idUser + "/tabs/" + id);
-    };
-    TabService.prototype.createTab = function (name, color, icon, idUser) {
-        return this.post("users/" + idUser + "/tabs", JSON.parse('{"name": "' + name + '", "color" : "' + color + '", "icon" : "' + icon + '"}'));
-    };
-    TabService.prototype.editTab = function (id, name, color, icon, idUser) {
-        return this.patch("users/" + idUser + "/tabs/" + id, JSON.parse('{"name": "' + name + '", "color" : "' + color + '", "icon" : "' + icon + '"}'));
-    };
-    TabService.prototype.deleteTab = function (idUser, id) {
-        return this.del("users/" + idUser + "/tabs/" + id);
-    };
-    TabService = __decorate([
+    FileService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], TabService);
-    return TabService;
+    ], FileService);
+    return FileService;
 }(maService_1.MAService));
-exports.TabService = TabService;
-//# sourceMappingURL=tabService.js.map
+exports.FileService = FileService;
+//# sourceMappingURL=fileService.js.map

@@ -2,14 +2,15 @@
 
 <div *ngIf="profileDetails">
     <div *ngFor="let achievementList of profileDetails.tabs">
-        <div [style.background]="achievementList.color" class="achievementList">
+        <a [style.background]="achievementList.color" class="achievementList"
+            href="/formtab?id={{achievementList.id}}">
             <span>
                 <p>
                     <i class="{{achievementList.icon}}"></i><br/>
                     {{achievementList.name}}
                 </p>
             </span>
-        </div>
+        </a>
     </div>
 
     <a id="addButton" routerLink="/formtab">

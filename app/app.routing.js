@@ -10,6 +10,7 @@ var editTabs_component_1 = require('./components/editTabs/editTabs.component');
 var profileForm_component_1 = require('./components/profileForm/profileForm.component');
 var tabForm_component_1 = require('./components/tabForm/tabForm.component');
 var achievementForm_component_1 = require('./components/achievementForm/achievementForm.component');
+var testFile_component_1 = require('./components/testFile/testFile.component');
 var appRoutes = [
     {
         path: '',
@@ -50,6 +51,10 @@ var appRoutes = [
     {
         path: 'formachievement',
         component: achievementForm_component_1.AchievementFormComponent
+    },
+    {
+        path: 'testfile',
+        component: testFile_component_1.TestFileComponent
     }
 ];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);

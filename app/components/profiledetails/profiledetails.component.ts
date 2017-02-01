@@ -19,11 +19,35 @@ export class ProfileDetailsComponent {
 
   profileDetails: ProfileDetails;
   personalProfile: Boolean = false;
+  connected: Boolean = false;
+
+  showList: Number = 0;
+  paddingLeft = 0;
+  showAchievement: Number = 0;
+  nbAchievementShown = 0;
 
   constructor (private profileDetailsService: ProfileDetailsService, private sanitizer: DomSanitizer, private route: ActivatedRoute){
+    this.connected = (localStorage.getItem("user")) != null;
     
     
-    
+  }
+
+  changeShowList(number){
+    this.showList = number;
+  }
+
+  changeShowAchievement(number) {
+    this.showAchievement = number;
+  }
+
+  changeNbAchievementShown(number) {
+    let nbTabs = this.profileDetails.tabs.length;
+    if((localStorage.getItem("user")) == null){
+      nbTabs = 0;
+    }
+    this.nbAchievementShown = number;
+    let widthAchievement = 100 / (nbTabs+1);
+    this.paddingLeft = (number*widthAchievement)+(widthAchievement/2)-0.5;
   }
 
   parseRes(res) {
@@ -71,6 +95,11 @@ export class ProfileDetailsComponent {
 
   saveProfileDetails(profileDetails) {
     this.profileDetails = profileDetails;
+    let nbTabs = this.profileDetails.tabs.length;
+    if((localStorage.getItem("user")) == null){
+      nbTabs = 0;
+    }
+    this.paddingLeft = ((100 / (nbTabs + 1)) / 2)-0.5;
     if(localStorage.getItem("user") && this.profileDetails.id == JSON.parse(localStorage.getItem("user")).id) {
       this.personalProfile = true;
     }

@@ -2,22 +2,20 @@
 
 <div *ngIf="profileDetails">
     <div *ngFor="let achievementList of profileDetails.tabs">
-        <div [style.background]="achievementList.color" class="centeredMessage">
-            <span>
-                <p>
-                    <i class="{{achievementList.icon}}"></i>
-                    {{achievementList.name}}
-                </p>
-            </span>
+        <h1 class="centeredMessage">
+            Tab : <i class="{{achievementList.icon}}"></i>
+            {{achievementList.name}}
+        </h1>
+        <div class="centeredMessage">
             <div *ngFor="let achievement of achievementList.achievements">
-                <div [style.background]="achievementList.color" class="achievement">
+                <a [style.background]="achievementList.color" class="achievement" href="formachievement?id={{achievement.id}}&tabid={{achievementList.id}}">
                     <span>
                         <p>
-                            <i class="{{achievement.icon}}"></i><br/>
+                            <i class="{{achievement.icon}}"></i>
                             {{achievement.name}}
                         </p>
                     </span>
-                </div>
+                </a>
             </div>
 
         </div>

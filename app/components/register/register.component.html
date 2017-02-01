@@ -8,7 +8,7 @@
 <div *ngIf="error">
     <div class="error">{{error}}</div>
 </div>
-<form>    
+<form (ngSubmit)="registerAttempt()">    
     <label for="login">E-mail</label><br/>
     <input [(ngModel)]="login" name="login" type="email" placeholder="john.doe@email.com" required/><br/><br/>
     <label for="firstname">Firstname</label><br/>
@@ -17,6 +17,6 @@
     <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required/><br/><br/>
     <label for="password">Password</label><br/>
     <input [(ngModel)]="password" name="password" type="password" placeholder="••••••••••••" required/><br/><br/>
-    <input (click)="registerAttempt()" type="submit" value="Register"/>
+    <input type="submit" value="Register"/>
 </form>
 

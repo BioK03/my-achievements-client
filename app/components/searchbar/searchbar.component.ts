@@ -14,11 +14,17 @@ export class SearchbarComponent {
   words: string = "";
   profiles;
   search;
+  resultsShown: Boolean = true;
 
   constructor(private searchService: SearchService) {
-    this.search = require('../../../dist/scripts/all.js');
-    console.log(this.search);
-    new this.search();
+    
+  }
+
+  setResultsShown(value){
+    setTimeout(() => {
+      //this.resultsShown = value;
+    }, 500);
+    
   }
 
   searchResults() {

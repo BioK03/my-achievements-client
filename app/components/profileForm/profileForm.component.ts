@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
+import { FileService } from '../../services/fileService/fileService';
 import { ProfileDetailsService } from '../../services/profileDetailsService/profileDetailsService';
 import { ProfileDetails } from '../../classes/ProfileDetailsClass';
 
@@ -12,12 +14,12 @@ import { ProfileDetails } from '../../classes/ProfileDetailsClass';
 
 export class ProfileFormComponent { 
   error: String = "";
-  profileDetails: ProfileDetails;
+  id: Number = 0;
   firstname: String = "";
   lastname: String = "";
   picture: String = "";
 
-  constructor (private profileDetailsService: ProfileDetailsService, private router: Router){
+  constructor (private profileDetailsService: ProfileDetailsService, private router: Router, private fileService: FileService){
     
     
     
@@ -41,8 +43,21 @@ export class ProfileFormComponent {
       console.error(this.error);
     }
     else {
-      this.saveProfileDetails(res);
+      this.id = res["id"];
+      this.firstname = res["firstname"];
+      this.lastname = res["lastname"];
+      this.picture = res["picture"];
     }
+  }
+
+  updateFiles(event) {
+    let files = event.srcElement.files;
+    this.fileService.makeFileRequest('http://localhost:8100/upload', [], files).subscribe(
+      res => {
+        console.log('sent');
+        console.log(res);
+      }
+    );
   }
 
   ngOnInit() {
@@ -55,15 +70,9 @@ export class ProfileFormComponent {
       );
   }
 
-  saveProfileDetails(profileDetails) {
-    this.profileDetails = profileDetails;
-    this.firstname = profileDetails.firstname;
-    this.lastname = profileDetails.lastname;
-  }
-
   editAttempt(){
     this.profileDetailsService.setEdit(
-      this.profileDetails.id,
+      this.id,
       this.firstname,
       this.lastname
     ).subscribe(

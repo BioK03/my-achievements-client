@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+
+import { TabService } from '../../services/tabService/tabService';
 
 @Component({
   moduleId: module.id,
@@ -15,19 +19,53 @@ export class TabFormComponent {
   color: String = "";
   icon: String = "";
 
+  faIcons;
 
-  constructor(private route: ActivatedRoute){
+
+  constructor(private route: ActivatedRoute, private tabService: TabService, private router: Router){
     this.route.queryParams.subscribe((params)=> {
       if(params['id']){
         this.addOrEdit = false;
-        
-      } else {
-        
+        this.tabService.getTab(JSON.parse(localStorage.getItem("user")).id, params['id']).subscribe(
+          res => {
+            this.id = res["id"];
+            this.name = res["name"];
+            this.color = res["color"];
+            this.icon = res["icon"];
+          }
+        );
       }
     });
+
+    this.faIcons = this.tabService.getFAIcons();
+  }
+
+  changeIcon(icon){
+    this.icon = icon;
   }
 
   tabAttempt(){
-    
+    if(this.id == 0){
+      this.tabService.createTab(this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(
+        res => {
+          this.router.navigateByUrl("/edittabs");
+        }
+      );
+    }else{
+      this.tabService.editTab(this.id, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(
+        res => {
+          this.router.navigateByUrl("/edittabs");
+        }
+      );
+    }
+  }
+
+  deleteAttempt() {
+    if(this.id == 0) return;
+    this.tabService.deleteTab(JSON.parse(localStorage.getItem("user")).id, this.id).subscribe(
+      res => {
+        this.router.navigateByUrl("/edittabs");
+      }
+    );
   }
 }

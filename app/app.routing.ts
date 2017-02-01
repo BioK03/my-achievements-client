@@ -12,6 +12,8 @@ import { ProfileFormComponent } from './components/profileForm/profileForm.compo
 import { TabFormComponent } from './components/tabForm/tabForm.component';
 import { AchievementFormComponent } from './components/achievementForm/achievementForm.component';
 
+import { TestFileComponent } from './components/testFile/testFile.component';
+
 const appRoutes: Routes = [
     {
         path: '',
@@ -52,6 +54,10 @@ const appRoutes: Routes = [
     {
         path: 'formachievement',
         component: AchievementFormComponent
+    },
+    {
+        path: 'testfile',
+        component: TestFileComponent
     }
 ];
 

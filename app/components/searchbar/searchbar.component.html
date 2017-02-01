@@ -1,11 +1,12 @@
 <form>
-<input [(ngModel)]="words" type="text" name="search" id="searchBarInput" placeholder="Search..." autocomplete="off"/><!--
+<input [(ngModel)]="words" (focus)="setResultsShown(true)" (focusout)="setResultsShown(false)" type="text" name="search" id="searchBarInput" placeholder="Search..." autocomplete="off"/><!--
 --><button (click)="searchResults()" type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-<div *ngIf="profiles">
-
+<div *ngIf="profiles != null && resultsShown">
     <a *ngFor="let profile of profiles" href="/profile?id={{profile.id}}">
+        <img class="searchPics" src="{{profile.picture}}" *ngIf="profile.picture" />
+        <img class="searchPics" src="/dist/images/profilepicture.png" *ngIf="!profile.picture" />
         {{profile.firstname}} {{profile.lastname}}
     </a>
 </div>

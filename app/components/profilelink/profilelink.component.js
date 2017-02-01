@@ -9,13 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Rx_1 = require('rxjs/Rx');
 var ProfileService_1 = require('../../services/ProfileService/ProfileService');
 var ProfileLinkComponent = (function () {
     function ProfileLinkComponent(profileService) {
         var _this = this;
         this.profileService = profileService;
+        this.visibleList = false;
         this.profile = JSON.parse(localStorage.getItem("user"));
-        profileService.isConnected().subscribe(function (res) {
+        Rx_1.Observable.interval(5000).subscribe(function (x) {
+            _this.checkConnection();
+        });
+    }
+    ProfileLinkComponent.prototype.changeVisibleList = function () {
+        var _this = this;
+        this.visibleList = !this.visibleList;
+        if (this.visibleList) {
+            setTimeout(function () {
+                _this.visibleList = false;
+            }, 3000);
+        }
+    };
+    ProfileLinkComponent.prototype.checkConnection = function () {
+        var _this = this;
+        this.profileService.isConnected().subscribe(function (res) {
             if (res["message"] == true) {
                 _this.profile = JSON.parse(localStorage.getItem("user"));
             }
@@ -24,7 +41,7 @@ var ProfileLinkComponent = (function () {
                 _this.profile = null;
             }
         });
-    }
+    };
     ProfileLinkComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

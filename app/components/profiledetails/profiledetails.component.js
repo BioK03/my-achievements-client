@@ -19,7 +19,28 @@ var ProfileDetailsComponent = (function () {
         this.route = route;
         this.error = "";
         this.personalProfile = false;
+        this.connected = false;
+        this.showList = 0;
+        this.paddingLeft = 0;
+        this.showAchievement = 0;
+        this.nbAchievementShown = 0;
+        this.connected = (localStorage.getItem("user")) != null;
     }
+    ProfileDetailsComponent.prototype.changeShowList = function (number) {
+        this.showList = number;
+    };
+    ProfileDetailsComponent.prototype.changeShowAchievement = function (number) {
+        this.showAchievement = number;
+    };
+    ProfileDetailsComponent.prototype.changeNbAchievementShown = function (number) {
+        var nbTabs = this.profileDetails.tabs.length;
+        if ((localStorage.getItem("user")) == null) {
+            nbTabs = 0;
+        }
+        this.nbAchievementShown = number;
+        var widthAchievement = 100 / (nbTabs + 1);
+        this.paddingLeft = (number * widthAchievement) + (widthAchievement / 2) - 0.5;
+    };
     ProfileDetailsComponent.prototype.parseRes = function (res) {
         if (res.length == 1) {
             // ERROR
@@ -60,6 +81,11 @@ var ProfileDetailsComponent = (function () {
     };
     ProfileDetailsComponent.prototype.saveProfileDetails = function (profileDetails) {
         this.profileDetails = profileDetails;
+        var nbTabs = this.profileDetails.tabs.length;
+        if ((localStorage.getItem("user")) == null) {
+            nbTabs = 0;
+        }
+        this.paddingLeft = ((100 / (nbTabs + 1)) / 2) - 0.5;
         if (localStorage.getItem("user") && this.profileDetails.id == JSON.parse(localStorage.getItem("user")).id) {
             this.personalProfile = true;
         }

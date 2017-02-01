@@ -20,8 +20,6 @@ var navbar_component_1 = require('./components/navbar/navbar.component');
 var searchbar_component_1 = require('./components/searchbar/searchbar.component');
 var profileLink_component_1 = require('./components/profileLink/profileLink.component');
 var profileDetails_component_1 = require('./components/profileDetails/profileDetails.component');
-var profileTabs_component_1 = require('./components/profileTabs/profileTabs.component');
-var tabDetails_component_1 = require('./components/tabDetails/tabDetails.component');
 var achievementPreview_component_1 = require('./components/achievementPreview/achievementPreview.component');
 var achievementDetails_component_1 = require('./components/achievementDetails/achievementDetails.component');
 var register_component_1 = require('./components/register/register.component');
@@ -35,6 +33,10 @@ var loginService_1 = require('./services/loginService/loginService');
 var profileService_1 = require('./services/profileService/profileService');
 var searchService_1 = require('./services/searchService/searchService');
 var profileDetailsService_1 = require('./services/profileDetailsService/profileDetailsService');
+var tabService_1 = require('./services/tabService/tabService');
+var achievementService_1 = require('./services/achievementService/achievementService');
+var testFile_component_1 = require('./components/testFile/testFile.component');
+var fileService_1 = require('./services/fileService/fileService');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -52,8 +54,6 @@ var AppModule = (function () {
                 searchbar_component_1.SearchbarComponent,
                 profileLink_component_1.ProfileLinkComponent,
                 profileDetails_component_1.ProfileDetailsComponent,
-                profileTabs_component_1.ProfileTabsComponent,
-                tabDetails_component_1.TabDetailsComponent,
                 achievementPreview_component_1.AchievementPreviewComponent,
                 achievementPreview_component_1.AchievementPreviewComponent,
                 achievementDetails_component_1.AchievementDetailsComponent,
@@ -63,12 +63,16 @@ var AppModule = (function () {
                 editAchievements_component_1.EditAchievementsComponent,
                 profileForm_component_1.ProfileFormComponent,
                 tabForm_component_1.TabFormComponent,
-                achievementForm_component_1.AchievementFormComponent],
+                achievementForm_component_1.AchievementFormComponent,
+                testFile_component_1.TestFileComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [profileService_1.ProfileService,
                 profileDetailsService_1.ProfileDetailsService,
                 searchService_1.SearchService,
-                loginService_1.LoginService]
+                loginService_1.LoginService,
+                tabService_1.TabService,
+                achievementService_1.AchievementService,
+                fileService_1.FileService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

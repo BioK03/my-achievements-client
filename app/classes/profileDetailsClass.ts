@@ -8,6 +8,6 @@ export class ProfileDetails {
       public picture: String,
       public email: String,
       public nbAchievements: number,
-      public list: AchievementList[]
+      public tabs: AchievementList[]
     ){}
 }

@@ -5,7 +5,7 @@
             <i class="fa fa-th-list"></i><br/>
             Manage your tabs
         </a>
-        <a *ngIf="profileDetails.nbAchievements > 0" routerLink="/editachievements">
+        <a *ngIf="profileDetails.tabs.length > 0" routerLink="/editachievements">
             <i class="fa fa-trophy"></i><br/>
             Manage your achievements
         </a>
@@ -20,17 +20,78 @@
             <h3>{{profileDetails.firstname}} {{profileDetails.lastname}}</h3>
             <p>{{profileDetails.nbAchievements}} <i class="fa fa-trophy"></i></p>
         </span>
-        <profileTabs [user]="profileDetails"></profileTabs>
+        <div class="profiletabs">
+            <div *ngIf="connected">
+                <span id="profileresume" (click)="changeShowList(0); changeNbAchievementShown(0)">
+                    <p>
+                        Résumé
+                    </p>
+                </span>
+                <span (click)="changeShowList(achievementList.id); changeNbAchievementShown(i+1)" *ngFor="let achievementList of profileDetails.tabs; let i = index" [style.background]="achievementList.color">
+                    <p>{{achievementList.name}}</p>
+                </span>
+                <img id="selector" [style.margin-left]="paddingLeft+'%'" src="/dist/images/triangle.png"/>
+            </div>
+            <div *ngIf="!connected">
+                <span id="profileresume" (click)="changeShowList(0); changeNbAchievementShown(0)">
+                    <p>
+                        Résumé
+                    </p>
+                </span>
+                <img id="selector" [style.margin-left]="paddingLeft+'%'" src="/dist/images/triangle.png"/>
+            </div>
+        </div>
     </div>
     
     <div class="centeredMessage" *ngIf="profileDetails.tabs.length == 0">
         <span *ngIf="personalProfile == true">You have</span>
         <span *ngIf="personalProfile == false">This user has</span>
          no achievements :-(
-
-
     </div>
-    <div *ngFor="let achievementList of profileDetails.tabs">
-        <tabDetails [achievementList]="achievementList"></tabDetails>
+    
+    <div *ngFor="let achievementList of profileDetails.tabs" class="tabDetails">
+        <div class="achievementDiv" [style.background]="achievementList.color" *ngIf="showList == 0">
+
+            <span (click)="changeShowList(achievementList.id)" *ngIf="connected">
+                <p>
+                    <i class="{{achievementList.icon}}"></i><br/>
+                    {{achievementList.name}}
+                </p>
+            </span>
+            <span *ngIf="!connected">
+                <p>
+                    <i class="{{achievementList.icon}}"></i><br/>
+                    {{achievementList.name}}
+                </p>
+            </span>
+            <span (click)="changeShowAchievement(achievement.id)" *ngFor="let achievement of achievementList.achievements; let i = index">
+                <achievementpreview *ngIf="i < 3" [achievement]="achievement"></achievementpreview>
+            </span>
+        </div>
+
+        <div class="overlay" *ngIf="showAchievement != 0">
+            <i (click)="changeShowAchievement(0)" class="fa fa-times"></i>
+        </div>
+        <div *ngFor="let achievement of achievementList.achievements">
+            <div class="popup" *ngIf="showAchievement == achievement.id">
+                <h2 class="centeredMessage" [style.background]="achievementList.color">
+                    <i class="{{ achievement.icon }}"></i>
+                    {{ achievement.name }}
+                </h2>
+                <p>
+                    {{achievement.longdesc}}
+                </p>
+                <div>
+                    <img *ngFor="let picture of achievement.pictures" src="picture"/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="achievementDiv" *ngIf="showList == achievementList.id">
+            <div (click)="changeShowAchievement(achievement.id)" class="achievementDiv" *ngFor="let achievement of achievementList.achievements" [style.background]="achievementList.color"> 
+                <achievementdetails [achievement]="achievement"></achievementdetails>
+            </div>
+        </div>
     </div>
 </div>

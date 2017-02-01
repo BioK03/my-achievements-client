@@ -2,14 +2,18 @@
 <div *ngIf="error">
     <div class="error">{{error}}</div>
 </div>
-<div *ngIf="profileDetails">
-    <form>    
+<div>
+    <form (ngSubmit)="editAttempt()">    
         <label for="firstname">Fisrtname</label><br/>
         <input [(ngModel)]="firstname" name="firstname" type="text" placeholder="John" required/><br/><br/>
         <label for="lastname">Lastname</label><br/>
         <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required/><br/><br/>
         <label for="picture">Picture</label><br/>
-        <input [(ngModel)]="picture" name="picture" type="text" placeholder="picture.png"/><br/><br/>
-        <input (click)="editAttempt()" type="submit" value="Submit"/>
+        <input type="file" name="file" (change)="updateFiles($event)" /><br/>
+        <span *ngIf="picture">
+            Preview :
+            <img class="preview preview-profile" src="{{picture}}"/>
+        </span><br/><br/>
+        <input type="submit" value="Submit"/>
     </form>
 </div>

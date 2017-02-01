@@ -12,8 +12,6 @@ import { NavbarComponent }   from './components/navbar/navbar.component';
 import { SearchbarComponent }   from './components/searchbar/searchbar.component';
 import { ProfileLinkComponent }   from './components/profileLink/profileLink.component';
 import { ProfileDetailsComponent }   from './components/profileDetails/profileDetails.component';
-import { ProfileTabsComponent }   from './components/profileTabs/profileTabs.component';
-import { TabDetailsComponent }   from './components/tabDetails/tabDetails.component';
 import { AchievementPreviewComponent }   from './components/achievementPreview/achievementPreview.component';
 import { AchievementDetailsComponent }   from './components/achievementDetails/achievementDetails.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -30,7 +28,12 @@ import { LoginService } from './services/loginService/loginService';
 import { ProfileService } from './services/profileService/profileService';
 import { SearchService } from './services/searchService/searchService';
 import { ProfileDetailsService } from './services/profileDetailsService/profileDetailsService';
+import { TabService } from './services/tabService/tabService';
+import { AchievementService } from './services/achievementService/achievementService';
 
+
+import { TestFileComponent } from './components/testFile/testFile.component';
+import { FileService } from './services/fileService/fileService';
 
 @NgModule({
   imports:      [ BrowserModule,
@@ -45,8 +48,6 @@ import { ProfileDetailsService } from './services/profileDetailsService/profileD
                   SearchbarComponent,
                   ProfileLinkComponent,
                   ProfileDetailsComponent,
-                  ProfileTabsComponent,
-                  TabDetailsComponent,
                   AchievementPreviewComponent,
                   AchievementPreviewComponent,
                   AchievementDetailsComponent,
@@ -56,12 +57,16 @@ import { ProfileDetailsService } from './services/profileDetailsService/profileD
                   EditAchievementsComponent,
                   ProfileFormComponent,
                   TabFormComponent,
-                  AchievementFormComponent ],
+                  AchievementFormComponent,
+                  TestFileComponent ],
   bootstrap: [ AppComponent ],
   providers: [ ProfileService,
                ProfileDetailsService,
                SearchService,
-               LoginService ]
+               LoginService,
+               TabService,
+               AchievementService,
+               FileService ]
 })
 
 export class AppModule { }

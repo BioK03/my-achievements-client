@@ -10,12 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var fileService_1 = require('../../services/fileService/fileService');
 var profileDetailsService_1 = require('../../services/profileDetailsService/profileDetailsService');
 var ProfileFormComponent = (function () {
-    function ProfileFormComponent(profileDetailsService, router) {
+    function ProfileFormComponent(profileDetailsService, router, fileService) {
         this.profileDetailsService = profileDetailsService;
         this.router = router;
+        this.fileService = fileService;
         this.error = "";
+        this.id = 0;
         this.firstname = "";
         this.lastname = "";
         this.picture = "";
@@ -37,8 +40,18 @@ var ProfileFormComponent = (function () {
             console.error(this.error);
         }
         else {
-            this.saveProfileDetails(res);
+            this.id = res["id"];
+            this.firstname = res["firstname"];
+            this.lastname = res["lastname"];
+            this.picture = res["picture"];
         }
+    };
+    ProfileFormComponent.prototype.updateFiles = function (event) {
+        var files = event.srcElement.files;
+        this.fileService.makeFileRequest('http://localhost:8100/upload', [], files).subscribe(function (res) {
+            console.log('sent');
+            console.log(res);
+        });
     };
     ProfileFormComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -48,14 +61,9 @@ var ProfileFormComponent = (function () {
             _this.parseRes(profileDetails);
         });
     };
-    ProfileFormComponent.prototype.saveProfileDetails = function (profileDetails) {
-        this.profileDetails = profileDetails;
-        this.firstname = profileDetails.firstname;
-        this.lastname = profileDetails.lastname;
-    };
     ProfileFormComponent.prototype.editAttempt = function () {
         var _this = this;
-        this.profileDetailsService.setEdit(this.profileDetails.id, this.firstname, this.lastname).subscribe(function (res) {
+        this.profileDetailsService.setEdit(this.id, this.firstname, this.lastname).subscribe(function (res) {
             _this.router.navigateByUrl("/profile");
         });
     };
@@ -65,7 +73,7 @@ var ProfileFormComponent = (function () {
             selector: 'profileform',
             templateUrl: "profileForm.component.html"
         }), 
-        __metadata('design:paramtypes', [profileDetailsService_1.ProfileDetailsService, router_1.Router])
+        __metadata('design:paramtypes', [profileDetailsService_1.ProfileDetailsService, router_1.Router, fileService_1.FileService])
     ], ProfileFormComponent);
     return ProfileFormComponent;
 }());

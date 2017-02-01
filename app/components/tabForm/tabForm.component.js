@@ -10,10 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
+var tabService_1 = require('../../services/tabService/tabService');
 var TabFormComponent = (function () {
-    function TabFormComponent(route) {
+    function TabFormComponent(route, tabService, router) {
         var _this = this;
         this.route = route;
+        this.tabService = tabService;
+        this.router = router;
         this.addOrEdit = true;
         this.id = 0;
         this.name = "";
@@ -22,12 +26,39 @@ var TabFormComponent = (function () {
         this.route.queryParams.subscribe(function (params) {
             if (params['id']) {
                 _this.addOrEdit = false;
-            }
-            else {
+                _this.tabService.getTab(JSON.parse(localStorage.getItem("user")).id, params['id']).subscribe(function (res) {
+                    _this.id = res["id"];
+                    _this.name = res["name"];
+                    _this.color = res["color"];
+                    _this.icon = res["icon"];
+                });
             }
         });
+        this.faIcons = this.tabService.getFAIcons();
     }
+    TabFormComponent.prototype.changeIcon = function (icon) {
+        this.icon = icon;
+    };
     TabFormComponent.prototype.tabAttempt = function () {
+        var _this = this;
+        if (this.id == 0) {
+            this.tabService.createTab(this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
+                _this.router.navigateByUrl("/edittabs");
+            });
+        }
+        else {
+            this.tabService.editTab(this.id, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
+                _this.router.navigateByUrl("/edittabs");
+            });
+        }
+    };
+    TabFormComponent.prototype.deleteAttempt = function () {
+        var _this = this;
+        if (this.id == 0)
+            return;
+        this.tabService.deleteTab(JSON.parse(localStorage.getItem("user")).id, this.id).subscribe(function (res) {
+            _this.router.navigateByUrl("/edittabs");
+        });
     };
     TabFormComponent = __decorate([
         core_1.Component({
@@ -35,7 +66,7 @@ var TabFormComponent = (function () {
             selector: 'tabform',
             templateUrl: "tabForm.component.html"
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, tabService_1.TabService, router_2.Router])
     ], TabFormComponent);
     return TabFormComponent;
 }());

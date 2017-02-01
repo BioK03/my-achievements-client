@@ -23,6 +23,18 @@ var AchievementService = (function (_super) {
     function AchievementService(http) {
         _super.call(this, http);
     }
+    AchievementService.prototype.getAchievement = function (idUser, idTab, id) {
+        return this.get("users/" + idUser + "/tabs/" + idTab + "/achievements/" + id);
+    };
+    AchievementService.prototype.createAchievement = function (idUser, idTab, name, shortDesc, longDesc, icon, favorite) {
+        return this.post("users/" + idUser + "/tabs/" + idTab + "/achievements", JSON.parse('{"name" :"' + name + '", "icon": "' + icon + '", "favorite": ' + favorite + ', "shortdesc" : "' + shortDesc + '", "longdesc": "' + longDesc + '"}'));
+    };
+    AchievementService.prototype.editAchievement = function (idUser, idTab, idAchievement, name, shortDesc, longDesc, icon, favorite) {
+        return this.patch("users/" + idUser + "/tabs/" + idTab + "/achievements/" + idAchievement, JSON.parse('{"name" :"' + name + '", "icon": "' + icon + '", "favorite": ' + favorite + ', "shortdesc" : "' + shortDesc + '", "longdesc": "' + longDesc + '"}'));
+    };
+    AchievementService.prototype.deleteAchievement = function (idUser, idTab, idAchievement) {
+        return this.del("users/" + idUser + "/tabs/" + idTab + "/achievements/" + idAchievement);
+    };
     AchievementService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

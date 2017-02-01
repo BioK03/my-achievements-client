@@ -13,8 +13,28 @@ export class TabService extends MAService {
 
   constructor(http: Http) { super(http); }
 
-  
+  getAllTabs(idUser) {
+    return this.get("users/"+idUser+"/tabs");
+  }
 
-  
+  getTab(idUser, id) {
+    return this.get("users/"+idUser+"/tabs/"+id);
+  }
+
+  createTab(name, color, icon, idUser) {
+    return this.post("users/"+idUser+"/tabs",
+      JSON.parse('{"name": "'+name+'", "color" : "'+color+'", "icon" : "'+icon+'"}')
+    );
+  }
+
+  editTab(id, name, color, icon, idUser) {
+    return this.patch("users/"+idUser+"/tabs/"+id,
+      JSON.parse('{"name": "'+name+'", "color" : "'+color+'", "icon" : "'+icon+'"}')
+    );
+  }
+
+  deleteTab(idUser, id) {
+    return this.del("users/"+idUser+"/tabs/"+id);
+  }
 
 }

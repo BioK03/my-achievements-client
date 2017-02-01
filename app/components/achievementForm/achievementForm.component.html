@@ -5,13 +5,32 @@
 <div *ngIf="error">
     <div class="error">{{error}}</div>
 </div>
-<form>    
+<form (ngSubmit)="achievementAttempt()">
+    <div *ngIf="addOrEdit && tabList">
+        <label for="tab">Tab</label><br/>
+        <select name="tab" id="tab" [(ngModel)]="tabid" required>
+            <option *ngFor="let tab of tabList" value="{{tab.id}}">{{tab.name}}</option>
+        </select>
+    </div>
+
     <label for="name">Name</label><br/>
     <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required/><br/><br/>
-    <label for="color">Color</label><br/>
-    <input [(ngModel)]="color" name="color" type="color" required/><br/><br/>
-    <label for="icon">Icon</label><br/>
-    <input [(ngModel)]="icon" name="icon" type="text" required/><br/><br/>
-    <input (click)="achievementAttempt()" type="submit" value="Submit"/>
+    <label for="icon">Selected icon : </label>
+    <i class="{{icon}}"></i><br/><br/>
+    <div id="iconList">
+        <i (click)="changeIcon(icon)" class="{{icon}}" *ngFor="let icon of faIcons"></i>
+    </div><br/><br/>
+    <label for="favorite">Favorite ? (Note : Max 3 per Tab)</label>
+    <i (click)="changeFavorite(true)" *ngIf="!favorite" class="favorite fa fa-star-o"></i>
+    <i (click)="changeFavorite(false)" *ngIf="favorite" class="favorite fa fa-star"></i><br/><br/>
+    <label for="shortDesc">Short Description</label><br/>
+    <input [(ngModel)]="shortDesc" name="shortDesc" type="text" required/><br/><br/>
+    <label for="longDesc">Long Description</label><br/>
+    <input [(ngModel)]="longDesc" name="longDesc" type="text" required/><br/><br/>
+    <input type="submit" value="Submit"/>
+    <input class="deleteButton" *ngIf="!addOrEdit" (click)="deleteAttempt()" type="button" value="Delete" />
+    <a class="cancelButton" routerLink="/editachievements">Cancel</a>
 </form>
+
+
 

@@ -14,10 +14,13 @@ var SearchbarComponent = (function () {
     function SearchbarComponent(searchService) {
         this.searchService = searchService;
         this.words = "";
-        this.search = require('../../../dist/scripts/all.js');
-        console.log(this.search);
-        new this.search();
+        this.resultsShown = true;
     }
+    SearchbarComponent.prototype.setResultsShown = function (value) {
+        setTimeout(function () {
+            //this.resultsShown = value;
+        }, 500);
+    };
     SearchbarComponent.prototype.searchResults = function () {
         var _this = this;
         this.searchService.getSearchResults(this.words).subscribe(function (res) {
