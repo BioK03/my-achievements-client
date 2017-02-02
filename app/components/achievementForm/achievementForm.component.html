@@ -14,9 +14,9 @@
     </div>
 
     <label for="name">Name</label><br/>
-    <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required/><br/><br/>
+    <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required autocomplete="off"/><br/><br/>
     
-    <label for="order">Order (Move the slider below)</label><br/>
+    <label for="order">Position of this achievement in your tab (Move the slider below)</label><br/>
     <div id="achievementPreview" *ngIf="addOrEdit && achievementList">
         <input [(ngModel)]="order" type="range" name="order" min="1" max="{{achievementList.length + 1}}"/><br/>
         <span *ngFor="let achievement of achievementList; let i = index">
@@ -62,7 +62,7 @@
         <input type="file" multiple accept="image/*" name="file" (change)="updateFiles($event)" /><br/>
         <span *ngIf="pictures.length > 0">
             Previews :
-            <img *ngFor="let picture of pictures" class="preview preview-profile" src="{{picture}}"/>
+             <img *ngFor="let picture of pictures" class="preview preview-profile" src="{{picture}}"/>
         </span><br/><br/>
     </div>
     
@@ -72,15 +72,15 @@
         <i (click)="changeIcon(icon)" class="{{icon}}" *ngFor="let icon of faIcons"></i>
     </div><br/><br/>
     
-    <label for="favorite">Favorite ? (Note : Max 3 per Tab)</label>
+    <label for="favorite">Favorite ? (Note : Max 3 per Tab, a favorite achievement is public and is prioritarily printed )</label>
     <i (click)="changeFavorite(true)" *ngIf="!favorite" class="favorite fa fa-star-o"></i>
     <i (click)="changeFavorite(false)" *ngIf="favorite" class="favorite fa fa-star"></i><br/><br/>
     
     <label for="shortDesc">Short Description</label><br/>
-    <input [(ngModel)]="shortDesc" name="shortDesc" type="text" required/><br/><br/>
+    <input [(ngModel)]="shortDesc" name="shortDesc" type="text" required autocomplete="off"/><br/><br/>
     
     <label for="longDesc">Long Description</label><br/>
-    <input [(ngModel)]="longDesc" name="longDesc" type="text" required/><br/><br/>
+    <textarea [(ngModel)]="longDesc" name="longDesc" type="text" required autocomplete="off" lines="3"></textarea><br/><br/>
     
     <input type="submit" value="Submit"/>
     
