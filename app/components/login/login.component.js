@@ -41,9 +41,7 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.saveUser = function (profile) {
         localStorage.setItem("user", JSON.stringify(profile));
-        console.log("User saved !");
-        console.log(profile);
-        this.router.navigateByUrl("/profile?id=" + profile.id);
+        this.router.navigateByUrl("/profile");
     };
     LoginComponent.prototype.logoutUser = function () {
         localStorage.removeItem("user");

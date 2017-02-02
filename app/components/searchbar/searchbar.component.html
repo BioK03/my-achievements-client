@@ -5,8 +5,8 @@
 
 <div *ngIf="profiles != null && resultsShown">
     <a *ngFor="let profile of profiles" href="/profile?id={{profile.id}}">
-        <img class="searchPics" src="{{profile.picture}}" *ngIf="profile.picture" />
-        <img class="searchPics" src="/dist/images/profilepicture.png" *ngIf="!profile.picture" />
+        <img class="searchPics" src="{{profile.profilePicture}}" *ngIf="profile.profilePicture" />
+        <img class="searchPics" src="/dist/images/profilepicture.png" *ngIf="!profile.profilePicture" />
         {{profile.firstname}} {{profile.lastname}}
     </a>
 </div>

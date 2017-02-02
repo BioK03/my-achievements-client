@@ -11,8 +11,8 @@
         </a>
     </div>
     <span>
-        <img *ngIf="!profileDetails.picture" src="/dist/images/profilepicture.png"/>
-        <img *ngIf="profileDetails.picture" src="{{profileDetails.picture}}"/>
+        <img *ngIf="!profileDetails.profilePicture || profileDetails.profilePicture == 'null'" src="/dist/images/profilepicture.png"/>
+        <img *ngIf="profileDetails.profilePicture && profileDetails.profilePicture != 'null'" src="{{profileDetails.profilePicture}}"/>
     </span><!--
     
     --><div id="profileDetailsDiv">
@@ -51,7 +51,6 @@
     
     <div *ngFor="let achievementList of profileDetails.tabs" class="tabDetails">
         <div class="achievementDiv" [style.background]="achievementList.color" *ngIf="showList == 0">
-
             <span (click)="changeShowList(achievementList.id)" *ngIf="connected">
                 <p>
                     <i class="{{achievementList.icon}}"></i><br/>
@@ -82,13 +81,14 @@
                     {{achievement.longdesc}}
                 </p>
                 <div>
-                    <img *ngFor="let picture of achievement.pictures" src="picture"/>
+                    <img *ngFor="let picture of achievement.images" src="{{picture}}"/>
                 </div>
             </div>
 
         </div>
 
         <div class="achievementDiv" *ngIf="showList == achievementList.id">
+            <div class="centeredMessage" *ngIf="achievementList.achievements.length == 0">This tab contains no achievement :(</div>
             <div (click)="changeShowAchievement(achievement.id)" class="achievementDiv" *ngFor="let achievement of achievementList.achievements" [style.background]="achievementList.color"> 
                 <achievementdetails [achievement]="achievement"></achievementdetails>
             </div>

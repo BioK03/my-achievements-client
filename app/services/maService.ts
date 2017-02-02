@@ -35,7 +35,7 @@ export class MAService {
             if(res.status === 200){
                 return res.json()
             }else{
-                console.log("HTTP Error "+res.status+" ");
+                console.error("HTTP Error "+res.status+" ");
                 switch(res.status){
 
                     case 401:

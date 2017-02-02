@@ -1,4 +1,6 @@
-<img src="#"/>
+<span>
+    <img *ngIf="achievement.images && achievement.images[0]" src="{{achievement.images[0]}}"/>
+</span>
 <p>
     <i class="{{achievement.icon}}"></i> {{achievement.name}}
 </p>

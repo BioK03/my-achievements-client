@@ -8,10 +8,10 @@
         <input [(ngModel)]="firstname" name="firstname" type="text" placeholder="John" required/><br/><br/>
         <label for="lastname">Lastname</label><br/>
         <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required/><br/><br/>
-        <label for="picture">Picture</label><br/>
-        <input type="file" name="file" (change)="updateFiles($event)" /><br/>
+        <label for="picture">Picture (2MiB max)</label><br/>
+        <input type="file" accept="image/*" name="file" (change)="updateFiles($event)" /><br/>
         <span *ngIf="picture">
-            Preview :
+            Actual Picture :
             <img class="preview preview-profile" src="{{picture}}"/>
         </span><br/><br/>
         <input type="submit" value="Submit"/>

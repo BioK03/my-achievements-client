@@ -32,7 +32,7 @@ var MAService = (function () {
                 return res.json();
             }
             else {
-                console.log("HTTP Error " + res.status + " ");
+                console.error("HTTP Error " + res.status + " ");
                 switch (res.status) {
                     case 401:
                         return "A";

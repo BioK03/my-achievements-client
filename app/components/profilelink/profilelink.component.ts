@@ -13,7 +13,7 @@ import { Profile } from '../../classes/ProfileClass';
 })
 
 export class ProfileLinkComponent {
-  profile: Profile;
+  profile;
   visibleList: Boolean = false;
 
   constructor (private profileService: ProfileService){

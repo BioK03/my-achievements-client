@@ -17,15 +17,15 @@ var SearchbarComponent = (function () {
         this.resultsShown = true;
     }
     SearchbarComponent.prototype.setResultsShown = function (value) {
+        var _this = this;
         setTimeout(function () {
-            //this.resultsShown = value;
+            _this.resultsShown = value;
         }, 500);
     };
     SearchbarComponent.prototype.searchResults = function () {
         var _this = this;
         this.searchService.getSearchResults(this.words).subscribe(function (res) {
             _this.profiles = res;
-            console.log(res);
         });
     };
     SearchbarComponent = __decorate([

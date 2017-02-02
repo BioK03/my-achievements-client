@@ -59,6 +59,7 @@ var ProfileDetailsComponent = (function () {
         }
         else {
             this.saveProfileDetails(res);
+            console.log(res);
         }
     };
     ProfileDetailsComponent.prototype.ngOnInit = function () {

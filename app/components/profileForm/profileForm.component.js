@@ -22,6 +22,7 @@ var ProfileFormComponent = (function () {
         this.firstname = "";
         this.lastname = "";
         this.picture = "";
+        this.files = null;
     }
     ProfileFormComponent.prototype.parseRes = function (res) {
         if (res.length == 1) {
@@ -43,15 +44,13 @@ var ProfileFormComponent = (function () {
             this.id = res["id"];
             this.firstname = res["firstname"];
             this.lastname = res["lastname"];
-            this.picture = res["picture"];
+            if (res["profilePicture"]) {
+                this.picture = res["profilePicture"];
+            }
         }
     };
     ProfileFormComponent.prototype.updateFiles = function (event) {
-        var files = event.srcElement.files;
-        this.fileService.makeFileRequest('http://localhost:8100/upload', [], files).subscribe(function (res) {
-            console.log('sent');
-            console.log(res);
-        });
+        this.files = event.srcElement.files;
     };
     ProfileFormComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -63,9 +62,21 @@ var ProfileFormComponent = (function () {
     };
     ProfileFormComponent.prototype.editAttempt = function () {
         var _this = this;
-        this.profileDetailsService.setEdit(this.id, this.firstname, this.lastname).subscribe(function (res) {
-            _this.router.navigateByUrl("/profile");
-        });
+        if (this.files) {
+            this.fileService.makeFileRequest('http://localhost:8100/upload', [], this.files).subscribe(function (res) {
+                _this.picture = _this.fileService.getFilePath(res.paths[0]);
+                _this.profileDetailsService.setEdit(_this.id, _this.firstname, _this.lastname, _this.picture).subscribe(function (res) {
+                    //console.log(res);
+                    _this.router.navigateByUrl("/profile");
+                });
+            });
+        }
+        else {
+            this.profileDetailsService.setEdit(this.id, this.firstname, this.lastname, this.picture).subscribe(function (res) {
+                //console.log(res);
+                _this.router.navigateByUrl("/profile");
+            });
+        }
     };
     ProfileFormComponent = __decorate([
         core_1.Component({

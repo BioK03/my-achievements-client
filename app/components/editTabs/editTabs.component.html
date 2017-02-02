@@ -13,8 +13,11 @@
         </a>
     </div>
 
-    <a id="addButton" routerLink="/formtab">
+    <a *ngIf="profileDetails.tabs.length < 6" id="addButton" routerLink="/formtab">
         <p><i class="fa fa-plus"></i> Add tab</p>
     </a>
+    <span *ngIf="profileDetails.tabs.length >= 6" class="centeredMessage">
+        You have reached the maximum of tabs (6)
+    </span>
     
 </div>

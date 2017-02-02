@@ -37,8 +37,13 @@ export class FileService extends MAService {
         };
 
         xhr.open('POST', url, true);
+        xhr.withCredentials = true;
         xhr.send(formData);
     });
+  }
+
+  getFilePath(filePath) {
+      return 'http://localhost:8100/'+filePath;
   }
 
 }

@@ -22,7 +22,7 @@ export class SearchbarComponent {
 
   setResultsShown(value){
     setTimeout(() => {
-      //this.resultsShown = value;
+      this.resultsShown = value;
     }, 500);
     
   }
@@ -31,7 +31,6 @@ export class SearchbarComponent {
     this.searchService.getSearchResults(this.words).subscribe(
       res => {
         this.profiles = res;
-        console.log(res);
       }
     );
   }

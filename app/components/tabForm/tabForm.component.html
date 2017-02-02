@@ -7,15 +7,60 @@
 </div>
 <form (ngSubmit)="tabAttempt()">    
     <label for="name">Name</label><br/>
-    <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required/><br/><br/>
+    <input [(ngModel)]="name" name="name" type="text" placeholder="Tab name" required/><br/><br/>
+    
     <label for="color">Color</label><br/>
     <input [(ngModel)]="color" name="color" type="color" required/><br/><br/>
+    
+    <label for="order">Order (Move the slider below)</label><br/>
+    <div id="tabPreview" *ngIf="addOrEdit && tabList">
+        <input [(ngModel)]="order" type="range" name="order" min="1" max="{{tabList.length + 1}}"/><br/>
+        <span *ngFor="let tab of tabList; let i = index">
+            <span *ngIf="i < (order - 1)" [style.background]="tab.color">
+                <i class="{{tab.icon}}"></i> {{tab.name}}
+            </span>
+        </span>
+        <span id="current" [style.background]="color">
+            <i class="{{icon}}"></i> {{name}}
+        </span>
+        <span *ngFor="let tab of tabList; let i = index">
+            <span *ngIf="i >= (order - 1)" [style.background]="tab.color">
+                <i class="{{tab.icon}}"></i> {{tab.name}}
+            </span>
+        </span>
+    </div>
+    <div id="tabPreview" *ngIf="!addOrEdit && tabList">
+        <input [(ngModel)]="order" type="range" name="order" min="1" max="{{tabList.length}}"/><br/>
+        <span *ngFor="let tab of tabList; let i = index">
+            <span *ngIf="i < (order - 1) && tab.id != id" [style.background]="tab.color">
+                <i class="{{tab.icon}}"></i> {{tab.name}}
+            </span>
+        </span>
+        <span *ngIf="order > orderOrigin && tabList[order-1].id != id" [style.background]="tabList[order-1].color">
+            <i class="{{tabList[order-1].icon}}"></i> {{tabList[order-1].name}}
+        </span>
+        <span id="current" [style.background]="color">
+            <i class="{{icon}}"></i> {{name}}
+        </span>
+        <span *ngIf="order < orderOrigin && tabList[order-1].id != id" [style.background]="tabList[order-1].color">
+            <i class="{{tabList[order-1].icon}}"></i> {{tabList[order-1].name}}
+        </span>
+        <span *ngFor="let tab of tabList; let i = index">
+            <span *ngIf="i > (order - 1) && tab.id != id" [style.background]="tab.color">
+                <i class="{{tab.icon}}"></i> {{tab.name}}
+            </span>
+        </span>
+    </div>
+    <br/><br/>
+
     <label for="icon">Selected icon : </label>
     <i class="{{icon}}"></i><br/><br/>
     <div id="iconList">
         <i (click)="changeIcon(icon)" class="{{icon}}" *ngFor="let icon of faIcons"></i>
     </div><br/><br/>
+    
     <input type="submit" value="Submit"/>
+    
     <input *ngIf="!addOrEdit" (click)="deleteAttempt()" type="button" value="Delete" class="deleteButton" />
     <a class="cancelButton" routerLink="/edittabs">Cancel</a>
 </form>

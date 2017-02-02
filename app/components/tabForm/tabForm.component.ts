@@ -16,10 +16,14 @@ export class TabFormComponent {
 
   id: Number = 0;
   name: String = "";
-  color: String = "";
-  icon: String = "";
+  color: String = "#33B5E5";
+  icon: String = "fa fa-pencil";
+  order: Number = 1;
+  orderOrigin: Number = 1;
 
   faIcons;
+
+  tabList;
 
 
   constructor(private route: ActivatedRoute, private tabService: TabService, private router: Router){
@@ -32,12 +36,20 @@ export class TabFormComponent {
             this.name = res["name"];
             this.color = res["color"];
             this.icon = res["icon"];
+            this.order = res["orderNumber"];
+            this.orderOrigin = res["orderNumber"];
           }
         );
       }
     });
 
     this.faIcons = this.tabService.getFAIcons();
+
+    this.tabService.getAllTabs(JSON.parse(localStorage.getItem("user")).id).subscribe(
+      res => {
+        this.tabList = res;
+      }
+    );
   }
 
   changeIcon(icon){
@@ -46,13 +58,13 @@ export class TabFormComponent {
 
   tabAttempt(){
     if(this.id == 0){
-      this.tabService.createTab(this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(
+      this.tabService.createTab(this.order, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(
         res => {
           this.router.navigateByUrl("/edittabs");
         }
       );
     }else{
-      this.tabService.editTab(this.id, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(
+      this.tabService.editTab(this.id, this.order, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(
         res => {
           this.router.navigateByUrl("/edittabs");
         }

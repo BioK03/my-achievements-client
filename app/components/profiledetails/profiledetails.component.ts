@@ -69,6 +69,7 @@ export class ProfileDetailsComponent {
     }
     else {
       this.saveProfileDetails(res);
+      console.log(res);
     }
   }
 

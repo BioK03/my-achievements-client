@@ -26,8 +26,8 @@ var ProfileDetailsService = (function (_super) {
     ProfileDetailsService.prototype.getProfile = function (id) {
         return this.get("profileDetails", id);
     };
-    ProfileDetailsService.prototype.setEdit = function (id, firstname, lastname) {
-        return this.patch("users/" + id, JSON.parse('{"firstname": "' + firstname + '", "lastname" : "' + lastname + '"}'));
+    ProfileDetailsService.prototype.setEdit = function (id, firstname, lastname, picture) {
+        return this.patch("users/" + id, JSON.parse('{"firstname": "' + firstname + '", "lastname" : "' + lastname + '", "profilePicture": "' + picture + '"}'));
     };
     ProfileDetailsService = __decorate([
         core_1.Injectable(), 

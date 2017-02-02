@@ -19,10 +19,9 @@ export class ProfileFormComponent {
   lastname: String = "";
   picture: String = "";
 
-  constructor (private profileDetailsService: ProfileDetailsService, private router: Router, private fileService: FileService){
-    
-    
-    
+  files = null;
+
+  constructor (private profileDetailsService: ProfileDetailsService, private router: Router, private fileService: FileService){    
   }
 
   parseRes(res) {
@@ -46,18 +45,16 @@ export class ProfileFormComponent {
       this.id = res["id"];
       this.firstname = res["firstname"];
       this.lastname = res["lastname"];
-      this.picture = res["picture"];
+      if(res["profilePicture"]){
+        this.picture = res["profilePicture"];
+      }
+      
     }
   }
 
   updateFiles(event) {
-    let files = event.srcElement.files;
-    this.fileService.makeFileRequest('http://localhost:8100/upload', [], files).subscribe(
-      res => {
-        console.log('sent');
-        console.log(res);
-      }
-    );
+    this.files = event.srcElement.files;
+    
   }
 
   ngOnInit() {
@@ -71,14 +68,37 @@ export class ProfileFormComponent {
   }
 
   editAttempt(){
-    this.profileDetailsService.setEdit(
-      this.id,
-      this.firstname,
-      this.lastname
-    ).subscribe(
-      res => {
-        this.router.navigateByUrl("/profile");
-      }
-    );
+    if(this.files){
+      this.fileService.makeFileRequest('http://localhost:8100/upload', [], this.files).subscribe(
+        res => {
+          this.picture = this.fileService.getFilePath(res.paths[0]);
+          this.profileDetailsService.setEdit(
+            this.id,
+            this.firstname,
+            this.lastname,
+            this.picture
+          ).subscribe(
+            res => {
+              //console.log(res);
+              this.router.navigateByUrl("/profile");
+            }
+          );
+        }
+      );
+    }else{
+      this.profileDetailsService.setEdit(
+          this.id,
+          this.firstname,
+          this.lastname,
+          this.picture
+        ).subscribe(
+          res => {
+            //console.log(res);
+            this.router.navigateByUrl("/profile");
+          }
+        );
+    }
+    
+    
   }
 }

@@ -8,26 +8,82 @@
 <form (ngSubmit)="achievementAttempt()">
     <div *ngIf="addOrEdit && tabList">
         <label for="tab">Tab</label><br/>
-        <select name="tab" id="tab" [(ngModel)]="tabid" required>
-            <option *ngFor="let tab of tabList" value="{{tab.id}}">{{tab.name}}</option>
+        <select name="tab" id="tab" [(ngModel)]="tabid" (change)="changeTab()" required>
+            <option *ngFor="let tabit of tabList" value="{{tabit.id}}">{{tabit.name}}</option>
         </select>
     </div>
 
     <label for="name">Name</label><br/>
     <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required/><br/><br/>
+    
+    <label for="order">Order (Move the slider below)</label><br/>
+    <div id="achievementPreview" *ngIf="addOrEdit && achievementList">
+        <input [(ngModel)]="order" type="range" name="order" min="1" max="{{achievementList.length + 1}}"/><br/>
+        <span *ngFor="let achievement of achievementList; let i = index">
+            <span *ngIf="i < (order - 1)" [style.background]="tabColor">
+                <i class="{{achievement.icon}}"></i> {{achievement.name}}
+            </span>
+        </span>
+        <span id="current" [style.background]="tabColor">
+            <i class="{{icon}}"></i> {{name}}
+        </span>
+        <span *ngFor="let achievement of achievementList; let i = index">
+            <span *ngIf="i >= (order - 1)" [style.background]="tabColor">
+                <i class="{{achievement.icon}}"></i> {{achievement.name}}
+            </span>
+        </span>
+    </div>
+    <div id="achievementPreview" *ngIf="!addOrEdit && achievementList">
+        <input [(ngModel)]="order" type="range" name="order" min="1" max="{{achievementList.length}}"/><br/>
+        <span *ngFor="let achievement of achievementList; let i = index">
+            <span *ngIf="i < (order - 1) && achievement.id != id" [style.background]="tabColor">
+                <i class="{{achievement.icon}}"></i> {{achievement.name}}
+            </span>
+        </span>
+        <span *ngIf="order > orderOrigin && achievementList[order-1].id != id" [style.background]="tabColor">
+            <i class="{{achievementList[order-1].icon}}"></i> {{achievementList[order-1].name}}
+        </span>
+        <span id="current" [style.background]="tabColor">
+            <i class="{{icon}}"></i> {{name}}
+        </span>
+        <span *ngIf="order < orderOrigin && achievementList[order-1].id != id" [style.background]="tabColor">
+            <i class="{{achievementList[order-1].icon}}"></i> {{achievementList[order-1].name}}
+        </span>
+        <span *ngFor="let achievement of achievementList; let i = index">
+            <span *ngIf="i > (order - 1) && achievement.id != id" [style.background]="tabColor">
+                <i class="{{achievement.icon}}"></i> {{achievement.name}}
+            </span>
+        </span>
+    </div>
+    <br/><br/>
+    
+    <div *ngIf="!addOrEdit">
+        <label for="pictures">Pictures (2MiB max)</label><br/>
+        <input type="file" multiple accept="image/*" name="file" (change)="updateFiles($event)" /><br/>
+        <span *ngIf="pictures.length > 0">
+            Previews :
+            <img *ngFor="let picture of pictures" class="preview preview-profile" src="{{picture}}"/>
+        </span><br/><br/>
+    </div>
+    
     <label for="icon">Selected icon : </label>
     <i class="{{icon}}"></i><br/><br/>
     <div id="iconList">
         <i (click)="changeIcon(icon)" class="{{icon}}" *ngFor="let icon of faIcons"></i>
     </div><br/><br/>
+    
     <label for="favorite">Favorite ? (Note : Max 3 per Tab)</label>
     <i (click)="changeFavorite(true)" *ngIf="!favorite" class="favorite fa fa-star-o"></i>
     <i (click)="changeFavorite(false)" *ngIf="favorite" class="favorite fa fa-star"></i><br/><br/>
+    
     <label for="shortDesc">Short Description</label><br/>
     <input [(ngModel)]="shortDesc" name="shortDesc" type="text" required/><br/><br/>
+    
     <label for="longDesc">Long Description</label><br/>
     <input [(ngModel)]="longDesc" name="longDesc" type="text" required/><br/><br/>
+    
     <input type="submit" value="Submit"/>
+    
     <input class="deleteButton" *ngIf="!addOrEdit" (click)="deleteAttempt()" type="button" value="Delete" />
     <a class="cancelButton" routerLink="/editachievements">Cancel</a>
 </form>

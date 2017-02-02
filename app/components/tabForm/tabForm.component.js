@@ -21,8 +21,10 @@ var TabFormComponent = (function () {
         this.addOrEdit = true;
         this.id = 0;
         this.name = "";
-        this.color = "";
-        this.icon = "";
+        this.color = "#33B5E5";
+        this.icon = "fa fa-pencil";
+        this.order = 1;
+        this.orderOrigin = 1;
         this.route.queryParams.subscribe(function (params) {
             if (params['id']) {
                 _this.addOrEdit = false;
@@ -31,10 +33,15 @@ var TabFormComponent = (function () {
                     _this.name = res["name"];
                     _this.color = res["color"];
                     _this.icon = res["icon"];
+                    _this.order = res["orderNumber"];
+                    _this.orderOrigin = res["orderNumber"];
                 });
             }
         });
         this.faIcons = this.tabService.getFAIcons();
+        this.tabService.getAllTabs(JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
+            _this.tabList = res;
+        });
     }
     TabFormComponent.prototype.changeIcon = function (icon) {
         this.icon = icon;
@@ -42,12 +49,12 @@ var TabFormComponent = (function () {
     TabFormComponent.prototype.tabAttempt = function () {
         var _this = this;
         if (this.id == 0) {
-            this.tabService.createTab(this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
+            this.tabService.createTab(this.order, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
                 _this.router.navigateByUrl("/edittabs");
             });
         }
         else {
-            this.tabService.editTab(this.id, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
+            this.tabService.editTab(this.id, this.order, this.name, this.color, this.icon, JSON.parse(localStorage.getItem("user")).id).subscribe(function (res) {
                 _this.router.navigateByUrl("/edittabs");
             });
         }

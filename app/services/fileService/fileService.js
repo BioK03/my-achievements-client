@@ -42,8 +42,12 @@ var FileService = (function (_super) {
                 }
             };
             xhr.open('POST', url, true);
+            xhr.withCredentials = true;
             xhr.send(formData);
         });
+    };
+    FileService.prototype.getFilePath = function (filePath) {
+        return 'http://localhost:8100/' + filePath;
     };
     FileService = __decorate([
         core_1.Injectable(), 

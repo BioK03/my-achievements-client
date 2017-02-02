@@ -1,10 +1,10 @@
 <span id="profileConnected" *ngIf="profile">
     <a class="nobr">
         <p (click)="changeVisibleList()">Hi, {{ profile.firstname }} !</p>
-        <span *ngIf="profile.picture" (click)="changeVisibleList()">
-            <img src="{{ profile.picture }}"/>
+        <span *ngIf="profile.profilePicture && profile.profilePicture != 'null'" (click)="changeVisibleList()">
+            <img src="{{ profile.profilePicture }}"/>
         </span>
-        <span *ngIf="!profile.picture" (click)="changeVisibleList()">
+        <span *ngIf="!profile.profilePicture || profile.profilePicture == 'null'" (click)="changeVisibleList()">
             <img src="/dist/images/profilepicture.png"/>
         </span>
     </a>

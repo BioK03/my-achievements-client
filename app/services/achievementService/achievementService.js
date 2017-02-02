@@ -26,11 +26,21 @@ var AchievementService = (function (_super) {
     AchievementService.prototype.getAchievement = function (idUser, idTab, id) {
         return this.get("users/" + idUser + "/tabs/" + idTab + "/achievements/" + id);
     };
-    AchievementService.prototype.createAchievement = function (idUser, idTab, name, shortDesc, longDesc, icon, favorite) {
-        return this.post("users/" + idUser + "/tabs/" + idTab + "/achievements", JSON.parse('{"name" :"' + name + '", "icon": "' + icon + '", "favorite": ' + favorite + ', "shortdesc" : "' + shortDesc + '", "longdesc": "' + longDesc + '"}'));
+    AchievementService.prototype.getAchievementsOfTab = function (idUser, idTab) {
+        return this.get("users/" + idUser + "/tabs/" + idTab + "/achievements");
     };
-    AchievementService.prototype.editAchievement = function (idUser, idTab, idAchievement, name, shortDesc, longDesc, icon, favorite) {
-        return this.patch("users/" + idUser + "/tabs/" + idTab + "/achievements/" + idAchievement, JSON.parse('{"name" :"' + name + '", "icon": "' + icon + '", "favorite": ' + favorite + ', "shortdesc" : "' + shortDesc + '", "longdesc": "' + longDesc + '"}'));
+    AchievementService.prototype.createAchievement = function (idUser, idTab, name, order, shortDesc, longDesc, icon, favorite) {
+        return this.post("users/" + idUser + "/tabs/" + idTab + "/achievements", JSON.parse('{"orderNumber": "' + order + '", "name" :"' + name + '", "icon": "' + icon + '", "favorite": ' + favorite + ', "shortdesc" : "' + shortDesc + '", "longdesc": "' + longDesc + '"}'));
+    };
+    AchievementService.prototype.editAchievement = function (idUser, idTab, idAchievement, name, order, shortDesc, longDesc, icon, favorite, pictures) {
+        var picturesArray = '[ ';
+        for (var _i = 0, pictures_1 = pictures; _i < pictures_1.length; _i++) {
+            var picture = pictures_1[_i];
+            picturesArray += '"' + picture + '",';
+        }
+        picturesArray = picturesArray.substring(0, picturesArray.length - 1);
+        picturesArray += "]";
+        return this.patch("users/" + idUser + "/tabs/" + idTab + "/achievements/" + idAchievement, JSON.parse('{"orderNumber": "' + order + '", "name" :"' + name + '", "icon": "' + icon + '", "favorite": ' + favorite + ', "shortdesc" : "' + shortDesc + '", "longdesc": "' + longDesc + '", "images": ' + picturesArray + '}'));
     };
     AchievementService.prototype.deleteAchievement = function (idUser, idTab, idAchievement) {
         return this.del("users/" + idUser + "/tabs/" + idTab + "/achievements/" + idAchievement);

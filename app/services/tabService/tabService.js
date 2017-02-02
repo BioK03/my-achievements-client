@@ -29,11 +29,11 @@ var TabService = (function (_super) {
     TabService.prototype.getTab = function (idUser, id) {
         return this.get("users/" + idUser + "/tabs/" + id);
     };
-    TabService.prototype.createTab = function (name, color, icon, idUser) {
-        return this.post("users/" + idUser + "/tabs", JSON.parse('{"name": "' + name + '", "color" : "' + color + '", "icon" : "' + icon + '"}'));
+    TabService.prototype.createTab = function (order, name, color, icon, idUser) {
+        return this.post("users/" + idUser + "/tabs", JSON.parse('{"orderNumber": "' + order + '", "name": "' + name + '", "color" : "' + color + '", "icon" : "' + icon + '"}'));
     };
-    TabService.prototype.editTab = function (id, name, color, icon, idUser) {
-        return this.patch("users/" + idUser + "/tabs/" + id, JSON.parse('{"name": "' + name + '", "color" : "' + color + '", "icon" : "' + icon + '"}'));
+    TabService.prototype.editTab = function (id, order, name, color, icon, idUser) {
+        return this.patch("users/" + idUser + "/tabs/" + id, JSON.parse('{"orderNumber": "' + order + '", "name": "' + name + '", "color" : "' + color + '", "icon" : "' + icon + '"}'));
     };
     TabService.prototype.deleteTab = function (idUser, id) {
         return this.del("users/" + idUser + "/tabs/" + id);

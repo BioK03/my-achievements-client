@@ -44,9 +44,7 @@ export class LoginComponent {
 
   saveUser(profile) {
     localStorage.setItem("user", JSON.stringify(profile));
-    console.log("User saved !");
-    console.log(profile);
-    this.router.navigateByUrl("/profile?id="+profile.id);
+    this.router.navigateByUrl("/profile");
   }
 
   logoutUser() {

@@ -18,10 +18,10 @@ export class ProfileDetailsService extends MAService {
       
   }
 
-  setEdit(id, firstname, lastname) {
+  setEdit(id, firstname, lastname, picture) {
     
     return this.patch("users/"+id, JSON.parse(
-      '{"firstname": "'+firstname+'", "lastname" : "'+lastname+'"}'));
+      '{"firstname": "'+firstname+'", "lastname" : "'+lastname+'", "profilePicture": "'+picture+'"}'));
   }
 
 }

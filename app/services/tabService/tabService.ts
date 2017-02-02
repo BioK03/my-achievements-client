@@ -21,15 +21,15 @@ export class TabService extends MAService {
     return this.get("users/"+idUser+"/tabs/"+id);
   }
 
-  createTab(name, color, icon, idUser) {
+  createTab(order, name, color, icon, idUser) {
     return this.post("users/"+idUser+"/tabs",
-      JSON.parse('{"name": "'+name+'", "color" : "'+color+'", "icon" : "'+icon+'"}')
+      JSON.parse('{"orderNumber": "'+order+'", "name": "'+name+'", "color" : "'+color+'", "icon" : "'+icon+'"}')
     );
   }
 
-  editTab(id, name, color, icon, idUser) {
+  editTab(id, order, name, color, icon, idUser) {
     return this.patch("users/"+idUser+"/tabs/"+id,
-      JSON.parse('{"name": "'+name+'", "color" : "'+color+'", "icon" : "'+icon+'"}')
+      JSON.parse('{"orderNumber": "'+order+'", "name": "'+name+'", "color" : "'+color+'", "icon" : "'+icon+'"}')
     );
   }
 
