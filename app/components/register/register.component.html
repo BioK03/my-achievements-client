@@ -15,8 +15,8 @@
     <input [(ngModel)]="firstname" name="firstname" type="text" placeholder="John" required/><br/><br/>
     <label for="lastname">Lastname</label><br/>
     <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required/><br/><br/>
-    <label for="password">Password</label><br/>
-    <input [(ngModel)]="password" name="password" type="password" placeholder="••••••••••••" required/><br/><br/>
+    <label for="password">Password (min 4 characters)</label><br/>
+    <input [(ngModel)]="password" name="password" type="password" placeholder="••••••••••••" pattern=".{4,}" required title="4 characters minimum"/><br/><br/>
     <input type="submit" value="Register"/>
 </form>
 

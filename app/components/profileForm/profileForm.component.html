@@ -5,9 +5,9 @@
 <div>
     <form (ngSubmit)="editAttempt()">    
         <label for="firstname">Fisrtname</label><br/>
-        <input [(ngModel)]="firstname" name="firstname" type="text" placeholder="John" required/><br/><br/>
+        <input [(ngModel)]="firstname" name="firstname" type="text" placeholder="John" required autocomplete="off"/><br/><br/>
         <label for="lastname">Lastname</label><br/>
-        <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required/><br/><br/>
+        <input [(ngModel)]="lastname" name="lastname" type="text" placeholder="Doe" required autocomplete="off"/><br/><br/>
         <label for="picture">Picture (2MiB max)</label><br/>
         <input type="file" accept="image/*" name="file" (change)="updateFiles($event)" /><br/>
         <span *ngIf="picture">
