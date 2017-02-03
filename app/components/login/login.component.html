@@ -18,14 +18,15 @@
 </form><br/>
 <h4>Connect with your favourite social network :</h4><br/>
 <span>
-    <a id="facebook" href="#">
+    <span id="facebook">
         <img src="dist/images/facebook.png"/>
-    </a>
+    </span>
 </span>
 <span>
-    <a id="google" href="#">
+    <span id="google" (click)="googleOAuth()">
         <img src="dist/images/google.png"/>
-    </a>
-</span><br/><br/><br/>
+    </span>
+</span>
+<br/><br/><br/>
 
 <a routerLink="/register">No account ? No social network ? Create an account now !</a>

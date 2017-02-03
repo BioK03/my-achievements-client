@@ -50,6 +50,15 @@ export class LoginComponent {
   logoutUser() {
     localStorage.removeItem("user");
   }
+
+  googleOAuth(){
+    this.loginService.googleOAuth().subscribe(
+      res => {
+        //console.log(res);
+        window.location.href = res["message"];
+      }
+    )
+  }
   
 
  }

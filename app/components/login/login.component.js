@@ -46,6 +46,12 @@ var LoginComponent = (function () {
     LoginComponent.prototype.logoutUser = function () {
         localStorage.removeItem("user");
     };
+    LoginComponent.prototype.googleOAuth = function () {
+        this.loginService.googleOAuth().subscribe(function (res) {
+            //console.log(res);
+            window.location.href = res["message"];
+        });
+    };
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

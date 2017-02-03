@@ -408,7 +408,7 @@ login, register {
 
   span {
     display: inline-block;
-    a {
+    span {
       display: inline-block;
       height: 3em;
 
@@ -462,6 +462,10 @@ login, register {
     #twitter:focus {
       border-top: 2px solid transparent;
       border-bottom: 1px solid darken(#55ACEE, 15%);
+    }
+
+    #google, #facebook {
+      cursor: pointer;
     }
   }
 }
