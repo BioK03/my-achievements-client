@@ -17,7 +17,7 @@
     <input [(ngModel)]="name" name="name" type="text" placeholder="Achievement name" required autocomplete="off"/><br/><br/>
     
     <label for="order">Position of this achievement in your tab (Move the slider below)</label><br/>
-    <div id="achievementPreview" *ngIf="addOrEdit && achievementList">
+    <div id="achievementPreview" *ngIf="addOrEdit && achievementList && achievementList.length > 1">
         <input [(ngModel)]="order" type="range" name="order" min="1" max="{{achievementList.length + 1}}"/><br/>
         <span *ngFor="let achievement of achievementList; let i = index">
             <span *ngIf="i < (order - 1)" [style.background]="tabColor">
@@ -33,7 +33,7 @@
             </span>
         </span>
     </div>
-    <div id="achievementPreview" *ngIf="!addOrEdit && achievementList">
+    <div id="achievementPreview" *ngIf="!addOrEdit && achievementList && achievementList.length > 1">
         <input [(ngModel)]="order" type="range" name="order" min="1" max="{{achievementList.length}}"/><br/>
         <span *ngFor="let achievement of achievementList; let i = index">
             <span *ngIf="i < (order - 1) && achievement.id != id" [style.background]="tabColor">
