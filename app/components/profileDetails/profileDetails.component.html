@@ -24,7 +24,7 @@
             <div *ngIf="connected">
                 <span id="profileresume" (click)="changeShowList(0); changeNbAchievementShown(0)">
                     <p>
-                        Résumé
+                        Overview
                     </p>
                 </span>
                 <span (click)="changeShowList(achievementList.id); changeNbAchievementShown(i+1)" *ngFor="let achievementList of profileDetails.tabs; let i = index" [style.background]="achievementList.color">
@@ -35,7 +35,7 @@
             <div *ngIf="!connected">
                 <span id="profileresume" (click)="changeShowList(0); changeNbAchievementShown(0)">
                     <p>
-                        Résumé
+                        Ovefview
                     </p>
                 </span>
                 <img id="selector" [style.margin-left]="paddingLeft+'%'" src="/dist/images/triangle.png"/>

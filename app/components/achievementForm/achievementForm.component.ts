@@ -62,7 +62,7 @@ export class AchievementFormComponent {
             this.longDesc = res["longdesc"];
             this.order = res["orderNumber"];
             this.orderOrigin = res["orderNumber"];
-            this.pictures = res["images"];²
+            this.pictures = res["images"];
 
             for(let tab of this.tabList){
               if(tab.id == this.tabid){

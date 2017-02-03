@@ -24,6 +24,9 @@ var SearchbarComponent = (function () {
     };
     SearchbarComponent.prototype.searchResults = function () {
         var _this = this;
+        setTimeout(function () {
+            _this.resultsShown = true;
+        }, 600);
         this.searchService.getSearchResults(this.words).subscribe(function (res) {
             _this.profiles = res;
         });

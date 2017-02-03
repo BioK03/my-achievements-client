@@ -16,6 +16,7 @@ export class SearchbarComponent {
   search;
   resultsShown: Boolean = true;
 
+
   constructor(private searchService: SearchService) {
     
   }
@@ -28,6 +29,9 @@ export class SearchbarComponent {
   }
 
   searchResults() {
+    setTimeout(() => {
+      this.resultsShown = true;
+    }, 600);
     this.searchService.getSearchResults(this.words).subscribe(
       res => {
         this.profiles = res;

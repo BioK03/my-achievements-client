@@ -2,10 +2,10 @@
 
 <div *ngIf="profileDetails">
     <div *ngFor="let achievementList of profileDetails.tabs">
-        <h1 class="centeredMessage">
+        <div class="centeredMessage">
             Tab : <i class="{{achievementList.icon}}"></i>
             {{achievementList.name}}
-        </h1>
+        </div>
         <div class="centeredMessage">
             <div *ngFor="let achievement of achievementList.achievements">
                 <a [style.background]="achievementList.color" class="achievement" href="formachievement?id={{achievement.id}}&tabid={{achievementList.id}}">
@@ -17,12 +17,13 @@
                     </span>
                 </a>
             </div>
-
+            <div *ngIf="achievementList.achievements.length == 0" class="centeredMessage">No achievements in this tab</div>
         </div>
     </div>
 
     <a id="addButton" routerLink="/formachievement">
         <p><i class="fa fa-plus"></i> Add achievement</p>
-    </a>
-    
+    </a><br/><br/><br/><br/>
+    <a routerLink="/edittabs">Would like to edit your tabs instead ?</a>
+    <br/><br/>
 </div>
