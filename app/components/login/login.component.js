@@ -10,14 +10,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
 var loginService_1 = require('../../services/loginService/loginService');
 var LoginComponent = (function () {
-    function LoginComponent(loginService, router) {
+    function LoginComponent(loginService, router, route) {
+        var _this = this;
         this.loginService = loginService;
         this.router = router;
+        this.route = route;
         this.error = "";
         this.login = "";
         this.password = "";
+        this.route.queryParams.subscribe(function (params) {
+            if (params['id']) {
+                var profile = {};
+                profile['id'] = params['id'];
+                profile['email'] = params['email'];
+                profile['profilePicture'] = params['profilePicture'];
+                profile['lastname'] = params['lastname'];
+                profile['firstname'] = params['firstname'];
+                profile['nbAchievements'] = params['nbAchievements'];
+                localStorage.setItem("user", JSON.stringify(profile));
+                _this.router.navigateByUrl("/profile");
+            }
+        });
     }
     LoginComponent.prototype.loginAttempt = function () {
         var _this = this;
@@ -52,13 +68,19 @@ var LoginComponent = (function () {
             window.location.href = res["message"];
         });
     };
+    LoginComponent.prototype.linkedinOAuth = function () {
+        this.loginService.linkedinOAuth().subscribe(function (res) {
+            //console.log(res);
+            window.location.href = res["message"];
+        });
+    };
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'login',
             templateUrl: "login.component.html"
         }), 
-        __metadata('design:paramtypes', [loginService_1.LoginService, router_1.Router])
+        __metadata('design:paramtypes', [loginService_1.LoginService, router_1.Router, router_2.ActivatedRoute])
     ], LoginComponent);
     return LoginComponent;
 }());

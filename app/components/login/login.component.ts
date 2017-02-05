@@ -74,6 +74,16 @@ export class LoginComponent {
       }
     )
   }
+
+  linkedinOAuth(){
+    this.loginService.linkedinOAuth().subscribe(
+      res => {
+        //console.log(res);
+        
+        window.location.href = res["message"];
+      }
+    )
+  }
   
 
  }
