@@ -11,3 +11,4 @@ import { Achievement } from '../../classes/achievementClass';
 export class AchievementPreviewComponent {
   @Input() achievement: Achievement;
  }
+

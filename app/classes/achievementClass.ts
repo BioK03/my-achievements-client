@@ -1,5 +1,4 @@
 
-
 export class Achievement {
   constructor(
       public name: string,
