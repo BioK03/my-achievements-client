@@ -27,6 +27,12 @@ export class LoginService extends MAService {
     return this.del("logout");
   }
 
-  
+  googleOAuth(){
+    return this.get("googleredirect");
+  }
+
+  linkedinOAuth(){
+    return this.get("linkedinredirect");
+  }
 
 }

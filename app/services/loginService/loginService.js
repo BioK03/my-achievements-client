@@ -32,6 +32,12 @@ var LoginService = (function (_super) {
     LoginService.prototype.logout = function () {
         return this.del("logout");
     };
+    LoginService.prototype.googleOAuth = function () {
+        return this.get("googleredirect");
+    };
+    LoginService.prototype.linkedinOAuth = function () {
+        return this.get("linkedinredirect");
+    };
     LoginService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
