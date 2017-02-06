@@ -77,8 +77,8 @@
                     <i class="{{ achievement.icon }}"></i>
                     {{ achievement.name }}
                 </h2>
-                <p>
-                    {{achievement.longdesc}}
+                <p [innerHTML]="achievement.longDescWithLinks">
+                    
                 </p>
                 <div>
                     <img *ngFor="let picture of achievement.images" src="{{picture}}"/>

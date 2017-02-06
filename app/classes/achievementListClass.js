@@ -1,10 +1,10 @@
 "use strict";
 var AchievementList = (function () {
-    function AchievementList(name, color, icon, list) {
+    function AchievementList(name, color, icon, achievements) {
         this.name = name;
         this.color = color;
         this.icon = icon;
-        this.list = list;
+        this.achievements = achievements;
     }
     return AchievementList;
 }());
