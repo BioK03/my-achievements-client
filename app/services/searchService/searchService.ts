@@ -18,3 +18,4 @@ export class SearchService extends MAService {
   }
 
 }
+

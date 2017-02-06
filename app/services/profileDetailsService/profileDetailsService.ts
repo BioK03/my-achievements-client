@@ -25,3 +25,4 @@ export class ProfileDetailsService extends MAService {
   }
 
 }
+

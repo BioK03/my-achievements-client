@@ -54,3 +54,4 @@ export class EditAchievementsComponent {
     this.profileDetails = profileDetails;
   }
 }
+

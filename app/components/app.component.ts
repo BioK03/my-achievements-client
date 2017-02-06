@@ -11,3 +11,4 @@ import { ProfileService } from '../services/profileService/profileService';
 })
 
 export class AppComponent { }
+
