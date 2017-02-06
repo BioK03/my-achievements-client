@@ -5,6 +5,6 @@ export class AchievementList {
       public name: string,
       public color: string,
       public icon: string,
-      public list: Achievement[]
+      public achievements: Achievement[]
     ){}
 }

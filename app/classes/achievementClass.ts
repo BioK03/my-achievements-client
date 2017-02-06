@@ -6,6 +6,7 @@ export class Achievement {
       public icon: string,
       public shortdesc: string,
       public longdesc: string,
-      public pictures: string[]
+      public pictures: string[],
+      public longDescWithLinks: string
     ){}
 }

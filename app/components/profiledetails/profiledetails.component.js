@@ -24,6 +24,7 @@ var ProfileDetailsComponent = (function () {
         this.paddingLeft = 0;
         this.showAchievement = 0;
         this.nbAchievementShown = 0;
+        this.longDescWithLinks = "";
         this.connected = (localStorage.getItem("user")) != null;
     }
     ProfileDetailsComponent.prototype.changeShowList = function (number) {
@@ -89,6 +90,34 @@ var ProfileDetailsComponent = (function () {
         this.paddingLeft = ((100 / (nbTabs + 1)) / 2) - 0.5;
         if (localStorage.getItem("user") && this.profileDetails.id == JSON.parse(localStorage.getItem("user")).id) {
             this.personalProfile = true;
+        }
+        this.parseLinks();
+    };
+    ProfileDetailsComponent.prototype.parseLinks = function () {
+        if (!this.profileDetails) {
+            return;
+        }
+        var pattern = /^http[s]?:/; //g;
+        var tabs = this.profileDetails.tabs;
+        var achievements = [];
+        for (var i = 0; i < tabs.length; i++) {
+            if (tabs[i].achievements) {
+                achievements = achievements.concat(tabs[i].achievements);
+            }
+        }
+        for (var i = 0; i < achievements.length; i++) {
+            var res = "";
+            var parts = achievements[i].longdesc.split(" ");
+            for (var j = 0; j < parts.length; j++) {
+                var partEqualsLink = pattern.exec(parts[j]);
+                if (partEqualsLink) {
+                    res += "<a href='" + parts[j] + "' target='_blank'>" + parts[j] + "</a> ";
+                }
+                else {
+                    res += parts[j] + " ";
+                }
+            }
+            achievements[i].longDescWithLinks = res;
         }
     };
     ProfileDetailsComponent = __decorate([
