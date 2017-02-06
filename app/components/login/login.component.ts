@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { LoginService } from '../../services/loginService/loginService';
 
@@ -14,8 +15,21 @@ export class LoginComponent {
   login: String = "";
   password: String = "";
 
-  constructor (private loginService: LoginService, private router: Router){
-    
+  constructor (private loginService: LoginService, private router: Router, private route: ActivatedRoute){
+    this.route.queryParams.subscribe((params)=> {
+      if(params['id']){
+        let profile = {};
+        profile['id'] = params['id'];
+        profile['email'] = params['email'];
+        profile['profilePicture'] = params['profilePicture'];
+        profile['lastname'] = params['lastname'];
+        profile['firstname'] = params['firstname'];
+        profile['nbAchievements'] = params['nbAchievements'];
+
+        localStorage.setItem("user", JSON.stringify(profile));
+        this.router.navigateByUrl("/profile");
+      }
+    });
   }
 
   loginAttempt(){
@@ -49,6 +63,26 @@ export class LoginComponent {
 
   logoutUser() {
     localStorage.removeItem("user");
+  }
+
+  googleOAuth(){
+    this.loginService.googleOAuth().subscribe(
+      res => {
+        //console.log(res);
+        
+        window.location.href = res["message"];
+      }
+    )
+  }
+
+  linkedinOAuth(){
+    this.loginService.linkedinOAuth().subscribe(
+      res => {
+        //console.log(res);
+        
+        window.location.href = res["message"];
+      }
+    )
   }
   
 
