@@ -853,6 +853,16 @@ profiledetails {
         height: 100%;
         width: 100%;
         display: block;
+
+        span {
+          height: 100%;
+          display: inline-block;
+        }
+
+        img {
+          height: 100%;
+          display: block;
+        }
       }
 
       > achievementdetails > div {

@@ -5,6 +5,10 @@
             {{achievement.name}}
         </p>
     </span>
-    <div></div>
+    <div>
+        <span *ngFor="let picture of achievement.images; let i = index">
+            <img *ngIf="i<3" src="{{picture}}" />
+        </span>
+    </div>
     <div>{{ achievement.shortdesc }}</div>
 </div>
