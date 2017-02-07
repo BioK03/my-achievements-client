@@ -31,7 +31,6 @@ import { ProfileDetailsService } from './services/profileDetailsService/profileD
 import { TabService } from './services/tabService/tabService';
 import { AchievementService } from './services/achievementService/achievementService';
 
-
 import { TestFileComponent } from './components/testFile/testFile.component';
 import { FileService } from './services/fileService/fileService';
 
