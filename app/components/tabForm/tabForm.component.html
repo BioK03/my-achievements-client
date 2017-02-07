@@ -12,7 +12,7 @@
     <label for="color">Color</label><br/>
     <input [(ngModel)]="color" name="color" type="color" required/><br/><br/>
     
-    <label for="order">Position of this tab in your profile (Move the slider below)</label><br/>
+    <label for="order" *ngIf="tabList && tabList.length > 1">Position of this tab in your profile (Move the slider below)</label><br/>
     <div id="tabPreview" *ngIf="addOrEdit && tabList && tabList.length > 1">
         <input [(ngModel)]="order" type="range" name="order" min="1" max="{{tabList.length + 1}}"/><br/>
         <span *ngFor="let tab of tabList; let i = index">
