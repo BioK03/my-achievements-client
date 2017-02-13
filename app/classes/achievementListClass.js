@@ -1,4 +1,3 @@
-
 "use strict";
 var AchievementList = (function () {
     function AchievementList(name, color, icon, achievements) {

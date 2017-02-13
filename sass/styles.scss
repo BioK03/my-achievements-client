@@ -844,7 +844,7 @@ profiledetails {
 
         > p {
           margin: auto;
-          
+          word-break: break-all;
           width: 100%;
         }
       }
@@ -854,13 +854,27 @@ profiledetails {
         width: 100%;
         display: block;
 
-        span {
+        .achievementDetailsImgSpanContainer {
           height: 100%;
+          width: 33.3%;
+          display: inline-block;
+        }
+
+        .achievementDetailsImgSpanContainer:nth-child(n+4) {
+          display: none;
+        }
+
+        .achievementDetailsImgSpan {
+          height: 100%;
+          width: 100%;
           display: inline-block;
         }
 
         img {
           height: 100%;
+          max-width: 100%;
+          margin: 0 auto;
+          background-color: #FFFFFF;
           display: block;
         }
       }
@@ -871,7 +885,7 @@ profiledetails {
         display: block;
         color: #FFFFFF;
 
-        span:first-child {
+        > span:first-child {
           font-size: 200%;
           display: flex;
           flex-direction: column;
